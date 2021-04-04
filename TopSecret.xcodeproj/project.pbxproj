@@ -21,6 +21,10 @@
 		789FC2EF2617DCC80021616B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2EE2617DCC80021616B /* FirebaseMessaging */; };
 		789FC2F22617DDF40021616B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2F12617DDF40021616B /* LoginView.swift */; };
 		789FC2F52617E9C00021616B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2F42617E9C00021616B /* RegisterView.swift */; };
+		789FC2F82618B9FC0021616B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2F72618B9FC0021616B /* UserModel.swift */; };
+		789FC2FB2618BACF0021616B /* UserAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2FA2618BACF0021616B /* UserAuthViewModel.swift */; };
+		789FC2FF2618BB080021616B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2FE2618BB080021616B /* Constants.swift */; };
+		789FC3032618C24B0021616B /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC3022618C24B0021616B /* HomeScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		789FC2DD2617DC050021616B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789FC2F12617DDF40021616B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		789FC2F42617E9C00021616B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		789FC2F72618B9FC0021616B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		789FC2FA2618BACF0021616B /* UserAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewModel.swift; sourceTree = "<group>"; };
+		789FC2FE2618BB080021616B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		789FC3022618C24B0021616B /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		789FC2C52617DA700021616B /* TopSecret */ = {
 			isa = PBXGroup;
 			children = (
+				789FC2FD2618BAF50021616B /* Utilities */,
 				789FC2C62617DA700021616B /* TopSecretApp.swift */,
 				789FC2D82617DA910021616B /* ViewModel */,
 				789FC2D72617DA8B0021616B /* Model */,
@@ -98,6 +107,7 @@
 				789FC2C82617DA700021616B /* ContentView.swift */,
 				789FC2F12617DDF40021616B /* LoginView.swift */,
 				789FC2F42617E9C00021616B /* RegisterView.swift */,
+				789FC3022618C24B0021616B /* HomeScreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,6 +115,7 @@
 		789FC2D72617DA8B0021616B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				789FC2F72618B9FC0021616B /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,8 +123,17 @@
 		789FC2D82617DA910021616B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				789FC2FA2618BACF0021616B /* UserAuthViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		789FC2FD2618BAF50021616B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				789FC2FE2618BB080021616B /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +221,10 @@
 				789FC2F22617DDF40021616B /* LoginView.swift in Sources */,
 				789FC2F52617E9C00021616B /* RegisterView.swift in Sources */,
 				789FC2C92617DA700021616B /* ContentView.swift in Sources */,
+				789FC3032618C24B0021616B /* HomeScreenView.swift in Sources */,
+				789FC2FB2618BACF0021616B /* UserAuthViewModel.swift in Sources */,
+				789FC2FF2618BB080021616B /* Constants.swift in Sources */,
+				789FC2F82618B9FC0021616B /* UserModel.swift in Sources */,
 				789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

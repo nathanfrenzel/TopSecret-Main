@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @EnvironmentObject var viewModel : UserAuthViewModel
+    
     @State var color = Color.black.opacity(0.7)
     @State var email = ""
     @State var password = ""
     @State var visible = false
+    @Binding var showRegisterView: Bool
     var body: some View {
         ZStack(alignment: .topTrailing){
             GeometryReader{ _ in
@@ -67,7 +71,7 @@ struct LoginView: View {
                     .padding(.bottom,35)
                     
                     Button(action: {
-                        
+                        viewModel.signIn(withEmail: email, password: password)
                     },label: {
                         Text("Log In")
                             .foregroundColor(.white)
@@ -84,7 +88,7 @@ struct LoginView: View {
                 .padding(.horizontal,25)
             }
             Button(action: {
-                
+                showRegisterView.toggle()
             },label: {
                 Text("Register")
                     .fontWeight(.bold)

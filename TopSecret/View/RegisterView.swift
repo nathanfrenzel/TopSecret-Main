@@ -14,15 +14,21 @@
 import SwiftUI
 
 struct RegisterView: View {
+    
+    @EnvironmentObject var viewModel : UserAuthViewModel
+    
     @State var color = Color.black.opacity(0.7)
     @State var email = ""
+    @State var username = ""
+    @State var fullName = ""
     @State var password = ""
     @State var rePassword = ""
     @State var visible = false
     @State var reVisible = false
+    @State var showRegisterView = false
     var body: some View {
-        ZStack(alignment: .topTrailing){
-            GeometryReader{ _ in
+        
+            if showRegisterView{
                 VStack{
                     Spacer()
 
@@ -32,11 +38,20 @@ struct RegisterView: View {
                         .foregroundColor(self.color)
                         .padding(.top, 55)
                     
-                    
+                    VStack{
                     TextField("Email", text: self.$email)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.purple : self.color, lineWidth: 2))
                         .padding(.top, 25)
+                    TextField("Username", text: self.$username)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? Color.purple : self.color, lineWidth: 2))
+                        .padding(.top, 25)
+                    TextField("Full Name", text: self.$fullName)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.fullName != "" ? Color.purple : self.color, lineWidth: 2))
+                        .padding(.top, 25)
+                    }
                     
                     HStack(spacing: 15){
                         
@@ -66,7 +81,7 @@ struct RegisterView: View {
                             if self.reVisible {
                                 TextField("Password", text: self.$rePassword)
                             }else{
-                                SecureField("Password", text: self.$rePassword)
+                                SecureField("Enter Password Again", text: self.$rePassword)
                                 
                             }
                         }
@@ -85,24 +100,12 @@ struct RegisterView: View {
                     
                     
                     
-                    HStack{
-                        Spacer()
-                        
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Forgot Password?")
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.purple)
-                                .font(.system(size: 12))
-                        })
-                    }
-                    .padding(.bottom,35)
+                  
                     
                     Button(action: {
-                        
+                        viewModel.registerUser(email: email, password: password, username: username, fullName: fullName)
                     },label: {
-                        Text("Log In")
+                        Text("Register")
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
@@ -111,19 +114,26 @@ struct RegisterView: View {
                     .cornerRadius(10)
                     .padding(.top,25)
                     
+                    HStack{
+                        Text("Already have an account?")
+                        Button(action: {
+                            showRegisterView.toggle()
+                        }, label: {
+                            Text("Log in")
+                        })
+                    }
+                    
                     Spacer()
                     
                 }
                 .padding(.horizontal,25)
+            }else{
+                LoginView(showRegisterView: $showRegisterView)
             }
-            Button(action: {
-                
-            },label: {
-                Text("Register")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.purple)
-            }).padding()
-        }
+          
+        
     }
 }
+    
+
 
