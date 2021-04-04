@@ -13,7 +13,7 @@ struct HomeScreenView: View {
     var body: some View {
         
         VStack{
-            Text("Welcome \(viewModel)")
+            Text("Welcome!")
             Button(action: {
                 viewModel.signOut()
             }, label: {
