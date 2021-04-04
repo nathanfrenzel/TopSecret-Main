@@ -26,4 +26,5 @@ init(dictionary: [String:Any]) {
     self.lastname = dictionary["lastname"] as? String ?? ""
 }
 
+    
 }

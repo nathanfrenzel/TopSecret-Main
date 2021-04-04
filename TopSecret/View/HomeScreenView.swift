@@ -13,12 +13,13 @@ struct HomeScreenView: View {
     var body: some View {
         
         VStack{
-            Text("Welcome!")
+            Text("Welcome \(viewModel.user?.username ?? " ")")
             Button(action: {
                 viewModel.signOut()
             }, label: {
                 Text("Sign Out!")
             })
+           
         }
     }
 }

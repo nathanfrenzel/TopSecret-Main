@@ -20,7 +20,7 @@ struct RegisterView: View {
     @State var color = Color.black.opacity(0.7)
     @State var email = ""
     @State var username = ""
-    @State var fullName = ""
+    @State var fullname = ""
     @State var password = ""
     @State var rePassword = ""
     @State var visible = false
@@ -32,6 +32,7 @@ struct RegisterView: View {
                 VStack{
                     Spacer()
 
+                    //Create an account text
                     Text("Create an account")
                         .font(.title)
                         .fontWeight(.bold)
@@ -47,9 +48,9 @@ struct RegisterView: View {
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? Color.purple : self.color, lineWidth: 2))
                         .padding(.top, 25)
-                    TextField("Full Name", text: self.$fullName)
+                    TextField("Full Name", text: self.$fullname)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.fullName != "" ? Color.purple : self.color, lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.fullname != "" ? Color.purple : self.color, lineWidth: 2))
                         .padding(.top, 25)
                     }
                     
@@ -103,7 +104,9 @@ struct RegisterView: View {
                   
                     
                     Button(action: {
-                        viewModel.registerUser(email: email, password: password, username: username, fullName: fullName)
+                        if(self.password == self.rePassword){
+                        viewModel.registerUser(email: email, password: password, username: username, fullname: fullname)
+                        }
                     },label: {
                         Text("Register")
                             .foregroundColor(.white)
