@@ -9,19 +9,19 @@ import SwiftUI
 
 struct HomeScreenView: View {
     
-    @EnvironmentObject var viewModel : UserAuthViewModel
     var body: some View {
-        
         VStack{
-            Text("Welcome \(viewModel.user?.username ?? " ")")
-            Button(action: {
-                viewModel.signOut()
-            }, label: {
-                Text("Sign Out!")
-            })
-           
+            Text("HouseView")
+            Text("HouseView")
+            Text("HouseView")
+            Text("HouseView")
+            Text("HouseView")
+            Text("HouseView")
+            Text("HouseView")
         }
     }
+    
 }
+
 
 

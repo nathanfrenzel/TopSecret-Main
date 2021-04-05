@@ -12,9 +12,9 @@ struct ContentView: View {
  
 
     var body: some View {
-        //if there is a user signed in then go to the home screen view else go to the register view
+        //if there is a user signed in then go to the Tab View else go to the register view
             if authViewModel.userSession != nil{
-                HomeScreenView()
+              TabView()
             }else{
                RegisterView()
             }
