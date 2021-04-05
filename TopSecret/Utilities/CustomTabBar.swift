@@ -14,19 +14,19 @@ struct CustomTabBar: View {
             
             //Tab Bar Buttons
             
-            TabBarButton(image: "bookmark", selectedTab: $selectedTab)
+            TabBarButton(image: "checkmark.circle", selectedTab: $selectedTab)
             
             TabBarButton(image: "map", selectedTab: $selectedTab)
 
             TabBarButton(image: "house", selectedTab: $selectedTab)
 
-            TabBarButton(image: "message", selectedTab: $selectedTab)
+            TabBarButton(image: "calendar.circle", selectedTab: $selectedTab)
 
             TabBarButton(image: "person", selectedTab: $selectedTab)
 
         }
         .padding()
-        .background(Color.white)
+        .background(Color.themeSecondary)
         .cornerRadius(30)
         .padding(.horizontal)
     }
@@ -52,11 +52,11 @@ struct TabBarButton : View {
             }, label: {
                 //filling the color if it's selected
                 Image(systemName: "\(image)\(selectedTab == image ? ".fill" : "")")
-                    .font(.system(size: 25, weight: .semibold))
-                    .foregroundColor(Color.purple)
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundColor(Color.themeBackground)
                 //Lifting View..
                 //if its selected..
-                    .offset(y: selectedTab == image ? -10 : 0)
+                    .offset(y: selectedTab == image ? -15 : 0)
                 
             })
             //Max Frame

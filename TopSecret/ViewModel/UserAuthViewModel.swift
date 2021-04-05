@@ -14,6 +14,9 @@ class UserAuthViewModel : ObservableObject {
     @Published var isAuthenticating = false
     @Published var error: Error?
     @Published var user: User?
+    @Published var startingRegistering = false
+    @Published var startingLoggingIn = false
+    
     
     init(){
         userSession = Auth.auth().currentUser
@@ -27,6 +30,7 @@ class UserAuthViewModel : ObservableObject {
                 print("DEBUG: ERROR: \(err.localizedDescription)")
                 return
             }
+            self.startingRegistering = true
             
             guard let user = result?.user else {return}
             
@@ -42,6 +46,7 @@ class UserAuthViewModel : ObservableObject {
         }
     }
     func signIn(withEmail email: String, password: String){
+        self.startingLoggingIn = true
         Auth.auth().signIn(withEmail: email , password: password) { (result, err) in
             if let err = err{
                 print("DEBUG: Failed to login: \(err.localizedDescription)")
@@ -51,6 +56,7 @@ class UserAuthViewModel : ObservableObject {
             print("DEBUG: Succesfully logged in!")
             self.userSession = result?.user
             self.fetchUser()
+            self.startingLoggingIn = false
         }
     }
     func signOut(){

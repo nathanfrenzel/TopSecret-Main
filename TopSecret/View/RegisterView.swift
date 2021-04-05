@@ -28,21 +28,30 @@ struct RegisterView: View {
     @State var showRegisterView = false
     var body: some View {
         
+        ZStack{
+            Color.themeBackground
+                .ignoresSafeArea(.all)
             if showRegisterView{
+                
+                ZStack{
+                    if viewModel.startingRegistering{
+                        ProgressView()
+                    }                    
                 VStack{
+                  
                     Spacer()
 
                     //Create an account text
                     Text("Create an account")
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(self.color)
+                        .foregroundColor(Color.themeForeground)
                         .padding(.top, 55)
                     
                     VStack{
                     TextField("Email", text: self.$email)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.purple : self.color, lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground: self.color, lineWidth: 2))
                         .padding(.top, 25)
                     TextField("Username", text: self.$username)
                         .padding()
@@ -105,24 +114,27 @@ struct RegisterView: View {
                     
                     Button(action: {
                         if(self.password == self.rePassword){
+                            
                         viewModel.registerUser(email: email, password: password, username: username, fullname: fullname)
                         }
                     },label: {
                         Text("Register")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.themeBackground)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
                     })
-                    .background(Color.purple)
+                    .background(Color.themeAccent)
                     .cornerRadius(10)
                     .padding(.top,25)
                     
                     HStack{
                         Text("Already have an account?")
+                            .foregroundColor(Color.themeForeground)
                         Button(action: {
                             showRegisterView.toggle()
                         }, label: {
                             Text("Log in")
+                                .foregroundColor(Color.themeAccent)
                         })
                     }
                     
@@ -130,6 +142,7 @@ struct RegisterView: View {
                     
                 }
                 .padding(.horizontal,25)
+                }
             }else{
                 LoginView(showRegisterView: $showRegisterView)
             }
@@ -139,4 +152,4 @@ struct RegisterView: View {
 }
     
 
-
+}

@@ -11,38 +11,71 @@ struct TabView: View {
     @EnvironmentObject var viewModel : UserAuthViewModel
     @State var selectedTab = "house"
     var body: some View {
-        ZStack{
-            Color.gray
-                .ignoresSafeArea(.all)
-            ScrollView{
-            VStack{
-            VStack(){
-                Button(action: {
-                    viewModel.signOut()
-                }, label: {
-                    Text("Sign Out")
-                }).padding()
-            }
-            VStack{
-                switch selectedTab {
-                case "house":
-                    HomeScreenView()
-                case "message":
-                    Text("Message")
-                default:
-                    Text("Test")
+        NavigationView{
+            ZStack{
+                
+                Color.themeBackground
+                    .ignoresSafeArea(.all)
+                VStack{
+                    Divider()
+                    
+                    ScrollView(showsIndicators: false){
+                        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)){
+                            // Arrow and Indicator...
+                            Image(systemName: "arrow.down")
+                                .offset(y: -25)
+                        VStack{
+                            switch selectedTab {
+                            case "house":
+                                HomeScreenView()
+                            case "message":
+                                Text("Message")
+                            default:
+                                Text("Test")
+                            }
+                        }
+                            
+                       
+                    }
+                    }
                 }
+                CustomTabBar(selectedTab: $selectedTab)
+                    .position(x:UIScreen.main.bounds.width/2,y:UIScreen.main.bounds.height - 225)
             }
-         
-            
-        }
-           
-            
-    }
-            CustomTabBar(selectedTab: $selectedTab)
-                .position(x:UIScreen.main.bounds.width/2,y:UIScreen.main.bounds.height - 125)
-    }
+            .toolbar{
+                
+                //Group Button
+                    
+                    
+                    //Settings Button
+                ToolbarItem(placement: .navigationBarTrailing){
+                        
+                        NavigationLink(destination:
+                                        SettingsView()
+                                       , label: {
+                                        Image(systemName: "gearshape.fill")
+                                            .foregroundColor(Color.themeAccent)
+                                       })
+                        
+                    }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Text("Top Secret")
+                        .foregroundColor(Color.themeTertiary)
+                        .font(.system(size: 30))
+                        .fontWeight(.bold)
+                        .onTapGesture {
+                        
+                            
+
+                        }
+                                        
+                        }
+
+            }
+        } .accentColor(Color.themeAccent)
     }
 }
+
+
 
 

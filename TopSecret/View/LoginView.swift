@@ -18,14 +18,20 @@ struct LoginView: View {
     @Binding var showRegisterView: Bool
     var body: some View {
         ZStack(alignment: .topTrailing){
+            Color.themeBackground
+                .ignoresSafeArea(.all)
+           
             GeometryReader{ _ in
+               
+                
                 VStack{
+                    
                     Spacer()
 
                     Text("Log in to your account")
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(self.color)
+                        .foregroundColor(Color.themeForeground)
                         .padding(.top, 55)
                     
                     
@@ -33,6 +39,11 @@ struct LoginView: View {
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.purple : self.color, lineWidth: 2))
                         .padding(.top, 25)
+                    ZStack{
+                        if viewModel.startingLoggingIn{
+                            ProgressView()
+                        }
+                    }
                     
                     HStack(spacing: 15){
                         
@@ -64,7 +75,7 @@ struct LoginView: View {
                         }, label: {
                             Text("Forgot Password?")
                                 .fontWeight(.bold)
-                                .foregroundColor(Color.purple)
+                                .foregroundColor(Color.themeAccent)
                                 .font(.system(size: 12))
                         })
                     }
@@ -72,13 +83,14 @@ struct LoginView: View {
                     
                     Button(action: {
                         viewModel.signIn(withEmail: email, password: password)
+                       
                     },label: {
                         Text("Log In")
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
                     })
-                    .background(Color.purple)
+                    .background(Color.themeAccent)
                     .cornerRadius(10)
                     .padding(.top,25)
                     
@@ -92,7 +104,7 @@ struct LoginView: View {
             },label: {
                 Text("Register")
                     .fontWeight(.bold)
-                    .foregroundColor(Color.purple)
+                    .foregroundColor(Color.themeAccent)
             }).padding()
         }
     }
