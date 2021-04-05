@@ -82,8 +82,9 @@ struct LoginView: View {
                     .padding(.bottom,35)
                     
                     Button(action: {
+                        if(self.email != "" && self.password != ""){
                         viewModel.signIn(withEmail: email, password: password)
-                       
+                        }
                     },label: {
                         Text("Log In")
                             .foregroundColor(.white)
