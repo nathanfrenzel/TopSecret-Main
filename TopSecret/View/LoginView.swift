@@ -102,6 +102,7 @@ struct LoginView: View {
             }
             Button(action: {
                 showRegisterView.toggle()
+                viewModel.startingRegistering = false
             },label: {
                 Text("Register")
                     .fontWeight(.bold)

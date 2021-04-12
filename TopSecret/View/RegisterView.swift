@@ -149,9 +149,28 @@ struct RegisterUsernameView : View {
     @Binding var password: String
     @State var username = ""
     @State var goNext = false
-    @State var color = Color.black.opacity(0.7)
+    @State var color = Color.themeForeground
+    
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    
+    
+    func checkUsername(){
+      viewModel.checkIfUsernameAvailable(username: username) { (available) in
+          if available && username != ""{
+              availableImage = "checkmark"
+              color = Color.green
+          }else {
+              availableImage = "xmark"
+              color = Color.red
+          }
+      }
+  }
+    
+     
     var body: some View{
         ZStack{
+            
+          
             Color.themeBackground
                 .ignoresSafeArea(.all)
             VStack{
@@ -162,7 +181,7 @@ struct RegisterUsernameView : View {
                     .foregroundColor(Color.themeForeground)
                     .padding(.top, 55)
                 
-                
+              
                 
                 //username shit
                 HStack(spacing: 15){
@@ -172,13 +191,22 @@ struct RegisterUsernameView : View {
                     
                     
                     Image(systemName: availableImage)
+                        .foregroundColor(color)
                     
                 }.padding()
-                .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? Color.themeForeground: self.color, lineWidth: 2))
+                .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? self.color: Color.black.opacity(0.7), lineWidth: 2))
                 .padding(.top, 25)
                 .padding(.horizontal,25)
                 
                 
+                .onReceive(timer) { (time) in
+                    if(self.username != ""){
+                    checkUsername()
+                    print("going on")
+                    }
+                }
+                    
+              
                 
                 NavigationLink(destination: FullNameRegisterView(username: $username, email: $email, password: $password), isActive: $goNext) {
                     EmptyView()
@@ -186,16 +214,19 @@ struct RegisterUsernameView : View {
                 //Next Button
                 Button(action: {
                     //TODO
-                    
-                    viewModel.checkIfUsernameAvailable(username: username, completion: { (available) in
+                    viewModel.checkIfUsernameAvailable(username: username) { (available) in
                         if available{
-                            availableImage = "checkmark"
                             self.goNext.toggle()
-                            
+                            color = Color.green
+                            availableImage = "checkmark"
+                            self.timer.upstream.connect().cancel()
+
                         }else{
+                            color = Color.red
+                            print("Not available")
                             availableImage = "xmark"
                         }
-                    })
+                    }
                 }
                 ,label: {
                     Text("Next")
@@ -267,7 +298,6 @@ struct FullNameRegisterView : View {
                     if fullName != ""{
                     viewModel.startingRegistering.toggle()
                     viewModel.registerUser(email: email, password: password, username: username, fullname: fullName)
-                    viewModel.startingRegistering = false
                     }else{
                         print("Please enter full name")
                     }
