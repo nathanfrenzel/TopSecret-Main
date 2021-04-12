@@ -37,7 +37,7 @@ struct LoginView: View {
                     
                     TextField("Email", text: self.$email)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.purple : self.color, lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground : self.color, lineWidth: 2))
                         .padding(.top, 25)
                     ZStack{
                         if viewModel.startingLoggingIn{
@@ -60,10 +60,10 @@ struct LoginView: View {
                             self.visible.toggle()
                         }, label: {
                             Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
-                                .foregroundColor(self.color)
+                                .foregroundColor(Color.themeForeground)
                         })
                     }.padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.password != "" ? Color.purple : self.color, lineWidth: 2))
+                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
                     .padding(.top, 25)
                     
                     
