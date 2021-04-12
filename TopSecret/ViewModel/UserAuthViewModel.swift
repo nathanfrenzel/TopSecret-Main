@@ -22,6 +22,20 @@ class UserAuthViewModel : ObservableObject {
         userSession = Auth.auth().currentUser
         fetchUser()
     }
+    
+    func checkIfUsernameAvailable(username: String, completion: @escaping (Bool) -> Void){
+        
+        let collectionRef = Firestore.firestore().collection("users")
+        collectionRef.whereField("username", isEqualTo: username).getDocuments { snapshot, err in
+            if let err = err {
+                print("Error getting document: \(err.localizedDescription)")
+            }else if(snapshot?.isEmpty)!{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
 
     
     func registerUser(email: String, password: String, username: String, fullname : String){

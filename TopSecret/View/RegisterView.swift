@@ -12,144 +12,291 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RegisterView: View {
     
     @EnvironmentObject var viewModel : UserAuthViewModel
     
     @State var color = Color.black.opacity(0.7)
-    @State var email = ""
-    @State var username = ""
-    @State var fullname = ""
     @State var password = ""
     @State var rePassword = ""
     @State var visible = false
     @State var reVisible = false
     @State var showRegisterView = false
+    @State var email = ""
+    @State var goNext = false
     var body: some View {
         
+        //if Register button from Login View is pressed
+        if showRegisterView {
+            NavigationView{
+                ZStack{
+                    //background color
+                    Color.themeBackground
+                        .ignoresSafeArea(.all)
+                    
+                    
+                    VStack{
+                        
+                        
+                        Spacer()
+                        
+                        
+                        TextField("Email", text: self.$email)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground: self.color, lineWidth: 2))
+                            .padding(.top, 25)
+                        
+                        HStack(spacing: 15){
+                            
+                            VStack{
+                                if self.visible {
+                                    TextField("Password", text: self.$password)
+                                }else{
+                                    SecureField("Password", text: self.$password)
+                                    
+                                }
+                            }
+                            
+                            Button(action: {
+                                self.visible.toggle()
+                            }, label: {
+                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
+                                    .foregroundColor(self.color)
+                            })
+                        }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
+                        .padding(.top, 25)
+                        HStack(spacing: 15){
+                            
+                            VStack{
+                                if self.reVisible {
+                                    TextField("Enter Password Again", text: self.$rePassword)
+                                }else{
+                                    SecureField("Enter Password Again", text: self.$rePassword)
+                                    
+                                }
+                            }
+                            
+                            Button(action: {
+                                self.reVisible.toggle()
+                            }, label: {
+                                Image(systemName: self.reVisible ? "eye.slash.fill" : "eye.fill")
+                                    .foregroundColor(self.color)
+                            })
+                        }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.rePassword != "" ? Color.themeForeground : self.color, lineWidth: 2))
+                        .padding(.top, 25)
+                        
+                        
+                        
+                        
+                        
+                        //Next Button
+                        NavigationLink(destination: RegisterUsernameView(email: $email, password: $password), isActive: $goNext) {
+                            EmptyView()
+                        }
+                        Button(action: {
+                            //TODO
+                            if self.email != "" && self.password != "" && self.password == self.rePassword{
+                                self.goNext.toggle()
+                            }else{
+                                print("You Must Fill Out Contents Properly")
+                            }
+                        }
+                        ,label: {
+                            Text("Next")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 50)
+                        })
+                        .background(Color.themeAccent)
+                        .cornerRadius(10)
+                        .padding(.top,25)
+                        
+                        HStack{
+                            Text("Already have an account?")
+                                .foregroundColor(Color.themeForeground)
+                            Button(action: {
+                                showRegisterView.toggle()
+                            }, label: {
+                                Text("Log in")
+                                    .foregroundColor(Color.themeAccent)
+                            })
+                        }
+                        
+                        Spacer()
+                        
+                    }
+                    .padding(.horizontal,25)
+                }
+                .navigationBarTitle("Create An Account")
+                .foregroundColor(Color.themeForeground)
+            }
+            
+            
+        } else {
+            LoginView(showRegisterView: $showRegisterView)
+        }
+    }
+}
+
+struct RegisterUsernameView : View {
+    
+    @EnvironmentObject var viewModel : UserAuthViewModel
+    
+    @State var availableImage = ""
+    @Binding var email: String
+    @Binding var password: String
+    @State var username = ""
+    @State var goNext = false
+    @State var color = Color.black.opacity(0.7)
+    var body: some View{
         ZStack{
             Color.themeBackground
                 .ignoresSafeArea(.all)
-            if showRegisterView{
+            VStack{
                 
-                ZStack{
-                    if viewModel.startingRegistering{
-                        ProgressView()
-                    }                    
-                VStack{
-                  
-                    Spacer()
-
-                    //Create an account text
-                    Text("Create an account")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.themeForeground)
-                        .padding(.top, 55)
+                
+                Text("Please pick a Unique Username!")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.themeForeground)
+                    .padding(.top, 55)
+                
+                
+                
+                //username shit
+                HStack(spacing: 15){
                     
-                    VStack{
-                    TextField("Email", text: self.$email)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground: self.color, lineWidth: 2))
-                        .padding(.top, 25)
                     TextField("Username", text: self.$username)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? Color.purple : self.color, lineWidth: 2))
-                        .padding(.top, 25)
-                    TextField("Full Name", text: self.$fullname)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.fullname != "" ? Color.purple : self.color, lineWidth: 2))
-                        .padding(.top, 25)
-                    }
-                    
-                    HStack(spacing: 15){
-                        
-                        VStack{
-                            if self.visible {
-                                TextField("Password", text: self.$password)
-                            }else{
-                                SecureField("Password", text: self.$password)
-                                
-                            }
-                            
-                        }
-                        
-                        Button(action: {
-                            self.visible.toggle()
-                        }, label: {
-                            Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
-                                .foregroundColor(self.color)
-                        })
-                    }.padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.password != "" ? Color.purple : self.color, lineWidth: 2))
-                    .padding(.top, 25)
-                    
-                    HStack(spacing: 15){
-                        
-                        VStack{
-                            if self.reVisible {
-                                TextField("Password", text: self.$rePassword)
-                            }else{
-                                SecureField("Enter Password Again", text: self.$rePassword)
-                                
-                            }
-                        }
-                        
-                        Button(action: {
-                            self.reVisible.toggle()
-                        }, label: {
-                            Image(systemName: self.reVisible ? "eye.slash.fill" : "eye.fill")
-                                .foregroundColor(self.color)
-                        })
-                    }.padding()
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.rePassword != "" ? Color.purple : self.color, lineWidth: 2))
-                    .padding(.top, 25)
-                    
-
                     
                     
                     
-                  
+                    Image(systemName: availableImage)
                     
-                    Button(action: {
-                        if(self.password == self.rePassword){
-                            
-                        viewModel.registerUser(email: email, password: password, username: username, fullname: fullname)
-                        }
-                    },label: {
-                        Text("Register")
-                            .foregroundColor(Color.themeBackground)
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 50)
-                    })
-                    .background(Color.themeAccent)
-                    .cornerRadius(10)
-                    .padding(.top,25)
-                    
-                    HStack{
-                        Text("Already have an account?")
-                            .foregroundColor(Color.themeForeground)
-                        Button(action: {
-                            showRegisterView.toggle()
-                        }, label: {
-                            Text("Log in")
-                                .foregroundColor(Color.themeAccent)
-                        })
-                    }
-                    
-                    Spacer()
-                    
-                }
+                }.padding()
+                .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? Color.themeForeground: self.color, lineWidth: 2))
+                .padding(.top, 25)
                 .padding(.horizontal,25)
+                
+                
+                
+                NavigationLink(destination: FullNameRegisterView(username: $username, email: $email, password: $password), isActive: $goNext) {
+                    EmptyView()
                 }
-            }else{
-                LoginView(showRegisterView: $showRegisterView)
-            }
-          
+                //Next Button
+                Button(action: {
+                    //TODO
+                    
+                    viewModel.checkIfUsernameAvailable(username: username, completion: { (available) in
+                        if available{
+                            availableImage = "checkmark"
+                            self.goNext.toggle()
+                            
+                        }else{
+                            availableImage = "xmark"
+                        }
+                    })
+                }
+                ,label: {
+                    Text("Next")
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width - 50)
+                })
+                .background(Color.themeAccent)
+                .cornerRadius(10)
+                .padding(.top,25)
+                
+                
+                
+                
+            }//end of vstack
+            
+            
+            .navigationBarTitle("Create A Username")
+            .foregroundColor(Color.themeForeground)
+        }//end of zstack
+        
+        
+        
+        
         
     }
 }
-    
 
+struct FullNameRegisterView : View {
+    
+    @EnvironmentObject var viewModel : UserAuthViewModel
+    
+    
+    @State var fullName = ""
+    @Binding var username: String
+    @Binding var email: String
+    @Binding var password: String
+    @State var color = Color.black.opacity(0.7)
+
+    
+    
+    var body: some View {
+        ZStack{
+            Color.themeBackground
+                .ignoresSafeArea(.all)
+            if(viewModel.startingRegistering){
+               ProgressView()
+            }
+            
+            VStack{
+                Text("Enter your full name!")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.themeForeground)
+                    .padding(.top, 55)
+                
+                TextField("Full Name", text: self.$fullName)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 4).stroke(self.fullName != "" ? Color.themeForeground: self.color, lineWidth: 2))
+                    .padding(.top, 25)
+                    .padding(.horizontal,25)
+                
+                
+                
+           
+                
+                //Next Button
+                Button(action: {
+                    //TODO
+                    if fullName != ""{
+                    viewModel.startingRegistering.toggle()
+                    viewModel.registerUser(email: email, password: password, username: username, fullname: fullName)
+                    viewModel.startingRegistering = false
+                    }else{
+                        print("Please enter full name")
+                    }
+                }
+                ,label: {
+                    Text("Register")
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width - 50)
+                })
+                .background(Color.themeAccent)
+                .cornerRadius(10)
+                .padding(.top,25)
+                
+                
+                
+            }
+        }
+        
+        
+    }
 }
+
+
+
+
+
+
+
+
+
+
