@@ -28,8 +28,8 @@ struct TabView: View {
                             switch selectedTab {
                             case "house":
                                 HomeScreenView()
-                            case "message":
-                                Text("Message")
+                            case "person":
+                                ProfileTabView()
                             default:
                                 Text("Test")
                             }
