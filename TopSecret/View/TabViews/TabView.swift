@@ -14,8 +14,10 @@ struct TabView: View {
         NavigationView{
             ZStack{
                 
+                //Sets the TabView background color
                 Color.themeBackground
                     .ignoresSafeArea(.all)
+                
                 VStack{
                     Divider()
                     

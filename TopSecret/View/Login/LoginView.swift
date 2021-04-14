@@ -15,6 +15,7 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @State var visible = false
+    @State var showForgotPassword = false
     @Binding var showRegisterView: Bool
     var body: some View {
         ZStack(alignment: .topTrailing){
@@ -26,6 +27,7 @@ struct LoginView: View {
                 
                 VStack{
                     
+                    
                     Spacer()
 
                     Text("Log in to your account")
@@ -36,6 +38,7 @@ struct LoginView: View {
                     
                     
                     TextField("Email", text: self.$email)
+                        .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground : self.color, lineWidth: 2))
                         .padding(.top, 25)
@@ -50,8 +53,10 @@ struct LoginView: View {
                         VStack{
                             if self.visible {
                                 TextField("Password", text: self.$password)
+                                    .autocapitalization(.none)
                             }else{
                                 SecureField("Password", text: self.$password)
+                                    .autocapitalization(.none)
                                 
                             }
                         }
@@ -71,7 +76,7 @@ struct LoginView: View {
                         Spacer()
                         
                         Button(action: {
-                            
+                            self.showForgotPassword.toggle()
                         }, label: {
                             Text("Forgot Password?")
                                 .fontWeight(.bold)
@@ -109,6 +114,8 @@ struct LoginView: View {
                     .foregroundColor(Color.themeAccent)
             }).padding()
         }
+        
+
     }
 }
 

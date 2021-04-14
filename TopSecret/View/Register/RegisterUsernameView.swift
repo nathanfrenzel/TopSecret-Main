@@ -10,11 +10,11 @@ import SwiftUI
 struct RegisterUsernameView : View {
     
     @EnvironmentObject var viewModel : UserAuthViewModel
+    @StateObject var registerVVM : RegisterValidationViewModel
     
     @State var availableImage = ""
     @Binding var email: String
     @Binding var password: String
-    @State var username = ""
     @State var goNext = false
     @State var color = Color.themeForeground
     @State var isChecking = false
@@ -24,8 +24,8 @@ struct RegisterUsernameView : View {
     
     func checkUsername(){
         isChecking = true
-        viewModel.checkIfUsernameAvailable(username: username) { (available) in
-            if available && username != ""{
+        registerVVM.checkIfUsernameAvailable(username: registerVVM.username) { (available) in
+            if available && registerVVM.username != ""{
                 availableImage = "checkmark"
                 color = Color.green
             }else {
@@ -55,8 +55,9 @@ struct RegisterUsernameView : View {
                 //username shit
                 HStack(spacing: 15){
                     
-                    TextField("Username", text: self.$username)
-                        .onChange(of: username) { (check) in
+                    TextField("Username", text: self.$registerVVM.username)
+                        .autocapitalization(.none)
+                        .onChange(of: registerVVM.username) { (check) in
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
                                 checkUsername()
                             }
@@ -64,11 +65,13 @@ struct RegisterUsernameView : View {
                     
                     
                     
+          
+                    
                     Image(systemName: availableImage)
                         .foregroundColor(color)
                     
                 }.padding()
-                .background(RoundedRectangle(cornerRadius: 4).stroke(self.username != "" ? self.color: Color.black.opacity(0.7), lineWidth: 2))
+                .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.username != "" ? self.color: Color.black.opacity(0.7), lineWidth: 2))
                 .padding(.top, 25)
                 .padding(.horizontal,25)
                 
@@ -77,14 +80,14 @@ struct RegisterUsernameView : View {
                 
                 
                 
-                NavigationLink(destination: FullNameRegisterView(username: $username, email: $email, password: $password), isActive: $goNext) {
+                NavigationLink(destination: FullNameRegisterView(username: $registerVVM.username, email: $email, password: $password), isActive: $goNext) {
                     EmptyView()
                 }
                 //Next Button
                 Button(action: {
                     //TODO
-                    if self.username != "" {
-                        viewModel.checkIfUsernameAvailable(username: username) { (available) in
+                    if self.registerVVM.username != "" {
+                        registerVVM.checkIfUsernameAvailable(username: registerVVM.username) { (available) in
                             if available{
                                 self.goNext.toggle()
                                 color = Color.green

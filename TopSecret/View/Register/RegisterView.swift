@@ -17,14 +17,12 @@ import Combine
 struct RegisterView: View {
     
     @EnvironmentObject var viewModel : UserAuthViewModel
+    @StateObject var registerVVM = RegisterValidationViewModel()
+
     
     @State var color = Color.black.opacity(0.7)
-    @State var password = ""
-    @State var rePassword = ""
     @State var visible = false
-    @State var reVisible = false
     @State var showRegisterView = false
-    @State var email = ""
     @State var goNext = false
     var body: some View {
         
@@ -43,18 +41,39 @@ struct RegisterView: View {
                         Spacer()
                         
                         
-                        TextField("Email", text: self.$email)
+                        TextField("Email", text: self.$registerVVM.email, onEditingChanged: { _ in
+                            self.registerVVM.email = self.registerVVM.email.lowercased()
+                        })
+                            
+                            .autocapitalization(.none)
                             .padding()
-                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color.themeForeground: self.color, lineWidth: 2))
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.email != "" ? Color.themeForeground: self.color, lineWidth: 2))
                             .padding(.top, 25)
                         
+
+                            VStack{
+                                if self.visible {
+                                    TextField("Password", text: self.$registerVVM.password)
+                                        .autocapitalization(.none)
+                                }else{
+                                    SecureField("Password",text: self.$registerVVM.password)
+                                        .autocapitalization(.none)
+                                    
+                                }
+                            }
+                            
+                          
+                        .padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
+                        .padding(.top, 25)
                         HStack(spacing: 15){
                             
                             VStack{
                                 if self.visible {
-                                    TextField("Password", text: self.$password)
+                                    TextField("Enter Password Again", text: self.$registerVVM.rePassword)
+                                        .autocapitalization(.none)
                                 }else{
-                                    SecureField("Password", text: self.$password)
+                                    SecureField("Enter Password Again",text: self.$registerVVM.rePassword)
+                                        .autocapitalization(.none)
                                     
                                 }
                             }
@@ -65,43 +84,48 @@ struct RegisterView: View {
                                 Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
                                     .foregroundColor(self.color)
                             })
-                        }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
-                        .padding(.top, 25)
-                        HStack(spacing: 15){
                             
-                            VStack{
-                                if self.reVisible {
-                                    TextField("Enter Password Again", text: self.$rePassword)
-                                }else{
-                                    SecureField("Enter Password Again", text: self.$rePassword)
-                                    
-                                }
-                            }
-                            
-                            Button(action: {
-                                self.reVisible.toggle()
-                            }, label: {
-                                Image(systemName: self.reVisible ? "eye.slash.fill" : "eye.fill")
-                                    .foregroundColor(self.color)
-                            })
-                        }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.rePassword != "" ? Color.themeForeground : self.color, lineWidth: 2))
+                          
+                        }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.rePassword != "" ? Color.themeForeground : self.color, lineWidth: 2))
                         .padding(.top, 25)
+                        
+                        Text("\(registerVVM.inLineErrorForPassword)")
+                            .foregroundColor(registerVVM.inLineErrorForPassword != "Valid Email and Password" ? Color.red : Color.green)
                         
                         
                         
                         
                         
                         //Next Button
-                        NavigationLink(destination: RegisterUsernameView(email: $email, password: $password), isActive: $goNext) {
-                            EmptyView()
-                        }
+                        NavigationLink(
+                            destination: RegisterUsernameView(registerVVM: registerVVM, email: $registerVVM.email, password: $registerVVM.password),
+                            isActive: $goNext,
+                            label: {
+                                EmptyView()
+                            })
                         Button(action: {
                             //TODO
-                            if self.email != "" && self.password != "" && self.password == self.rePassword{
-                                self.goNext.toggle()
+                            if self.registerVVM.email != "" && self.registerVVM.password != ""{
+                                self.registerVVM.checkIfEmailAvailable(email: registerVVM.email) { (available) in
+                                    if !available {
+                                        self.registerVVM.inLineErrorForPassword = "This email is already in use"
+                                    }else{
+                                        registerVVM.checkPassword()
+                                        if self.registerVVM.inLineErrorForPassword == "Valid Email and Password"{
+                                            self.goNext.toggle()
+                                        }
+                                    }
+                                }
                             }else{
-                                print("You Must Fill Out Contents Properly")
+                                registerVVM.inLineErrorForPassword = "You must fill out content properly!"
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                                    withAnimation(.easeInOut(duration: 1), {
+                                        registerVVM.inLineErrorForPassword = ""
+
+                                    })
+                                }
                             }
+                           
                         }
                         ,label: {
                             Text("Next")

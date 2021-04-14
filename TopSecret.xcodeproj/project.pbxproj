@@ -12,6 +12,9 @@
 		7887ADDD2625056900D9FC21 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADDC2625056900D9FC21 /* ProfileTabView.swift */; };
 		7887ADE2262513E600D9FC21 /* RegisterUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADE1262513E600D9FC21 /* RegisterUsernameView.swift */; };
 		7887ADE62625141500D9FC21 /* FullNameRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADE52625141500D9FC21 /* FullNameRegisterView.swift */; };
+		7887ADE9262622D700D9FC21 /* RegisterValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADE8262622D700D9FC21 /* RegisterValidationViewModel.swift */; };
+		7887ADEC2626314900D9FC21 /* PasswordStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADEB2626314900D9FC21 /* PasswordStatusModel.swift */; };
+		7887ADF026267F7300D9FC21 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887ADEF26267F7300D9FC21 /* ForgotPasswordView.swift */; };
 		788C7B532619676300E0C54C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 788C7B522619676200E0C54C /* GoogleService-Info.plist */; };
 		788C7B57261A2A3100E0C54C /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C7B56261A2A3100E0C54C /* HomeScreenViewModel.swift */; };
 		788C7B5A261A725C00E0C54C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C7B59261A725C00E0C54C /* CustomTabBar.swift */; };
@@ -41,6 +44,9 @@
 		7887ADDC2625056900D9FC21 /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		7887ADE1262513E600D9FC21 /* RegisterUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUsernameView.swift; sourceTree = "<group>"; };
 		7887ADE52625141500D9FC21 /* FullNameRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameRegisterView.swift; sourceTree = "<group>"; };
+		7887ADE8262622D700D9FC21 /* RegisterValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidationViewModel.swift; sourceTree = "<group>"; };
+		7887ADEB2626314900D9FC21 /* PasswordStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusModel.swift; sourceTree = "<group>"; };
+		7887ADEF26267F7300D9FC21 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		788C7B522619676200E0C54C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		788C7B56261A2A3100E0C54C /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		788C7B59261A725C00E0C54C /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		7887ADEE26267F5C00D9FC21 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				789FC2F12617DDF40021616B /* LoginView.swift */,
+				7887ADEF26267F7300D9FC21 /* ForgotPasswordView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		789FC2BA2617DA700021616B = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +156,10 @@
 		789FC2D62617DA840021616B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7887ADEE26267F5C00D9FC21 /* Login */,
 				7887ADE0262513C600D9FC21 /* Register */,
 				7887ADDB262504F900D9FC21 /* TabViews */,
 				789FC2C82617DA700021616B /* ContentView.swift */,
-				789FC2F12617DDF40021616B /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				789FC2F72618B9FC0021616B /* UserModel.swift */,
+				7887ADEB2626314900D9FC21 /* PasswordStatusModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +178,7 @@
 			children = (
 				789FC2FA2618BACF0021616B /* UserAuthViewModel.swift */,
 				788C7B56261A2A3100E0C54C /* HomeScreenViewModel.swift */,
+				7887ADE8262622D700D9FC21 /* RegisterValidationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -260,12 +277,15 @@
 			files = (
 				7887ADDD2625056900D9FC21 /* ProfileTabView.swift in Sources */,
 				788C7B5D261A7C2000E0C54C /* TabView.swift in Sources */,
+				7887ADEC2626314900D9FC21 /* PasswordStatusModel.swift in Sources */,
 				789FC2F22617DDF40021616B /* LoginView.swift in Sources */,
 				788C7B57261A2A3100E0C54C /* HomeScreenViewModel.swift in Sources */,
 				789FC2F52617E9C00021616B /* RegisterView.swift in Sources */,
 				789FC2C92617DA700021616B /* ContentView.swift in Sources */,
 				789FC3032618C24B0021616B /* HomeScreenView.swift in Sources */,
+				7887ADE9262622D700D9FC21 /* RegisterValidationViewModel.swift in Sources */,
 				784A0E1C261B6E8E0092284B /* SettingsView.swift in Sources */,
+				7887ADF026267F7300D9FC21 /* ForgotPasswordView.swift in Sources */,
 				789FC2FB2618BACF0021616B /* UserAuthViewModel.swift in Sources */,
 				7887ADE62625141500D9FC21 /* FullNameRegisterView.swift in Sources */,
 				788C7B5A261A725C00E0C54C /* CustomTabBar.swift in Sources */,

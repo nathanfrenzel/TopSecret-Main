@@ -18,26 +18,15 @@ class UserAuthViewModel : ObservableObject {
     @Published var startingLoggingIn = false
     
     
+    //When this VM is initialized userSession is initialized to the current user signed in
     init(){
         userSession = Auth.auth().currentUser
         fetchUser()
     }
     
-    func checkIfUsernameAvailable(username: String, completion: @escaping (Bool) -> Void){
-        
-        let collectionRef = Firestore.firestore().collection("users")
-        collectionRef.whereField("username", isEqualTo: username).getDocuments { snapshot, err in
-            if let err = err {
-                print("Error getting document: \(err.localizedDescription)")
-            }else if(snapshot?.isEmpty)!{
-                completion(true)
-            }else{
-                completion(false)
-            }
-        }
-    }
-
     
+    
+    //This method registers the user given an email and password, the username and fullName is put in the database along with the email and password
     func registerUser(email: String, password: String, username: String, fullname : String){
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
             if let err = err{
@@ -59,6 +48,7 @@ class UserAuthViewModel : ObservableObject {
             }
         }
     }
+    //This method signs in the user with a given email and password
     func signIn(withEmail email: String, password: String){
         self.startingLoggingIn = true
         Auth.auth().signIn(withEmail: email , password: password) { (result, err) in
@@ -73,10 +63,13 @@ class UserAuthViewModel : ObservableObject {
             self.startingLoggingIn = false
         }
     }
+    //This method sets userSession to nil and tries to sign the user out
     func signOut(){
         userSession = nil
         try? Auth.auth().signOut()
     }
+    
+    //This method fetches the current user's data
     func fetchUser(){
         guard let uid = userSession?.uid else {return}
         
