@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6290119826797A1400A226EF /* FullScreenPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6290119726797A1400A226EF /* FullScreenPostView.swift */; };
 		6290119B267B748000A226EF /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6290119A267B748000A226EF /* TextArea.swift */; };
+		6290119C267BE56D00A226EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789FC2CD2617DA720021616B /* Preview Assets.xcassets */; };
 		62A86E3D265D59CD0059E950 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A86E3C265D59CD0059E950 /* GoogleService-Info.plist */; };
 		62A86E3F265D684F0059E950 /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A86E3E265D684F0059E950 /* AddContentView.swift */; };
 		62FD065626754EB600C1CEBE /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FD065526754EB600C1CEBE /* PostCell.swift */; };
@@ -30,7 +31,6 @@
 		789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2C62617DA700021616B /* TopSecretApp.swift */; };
 		789FC2C92617DA700021616B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2C82617DA700021616B /* ContentView.swift */; };
 		789FC2CB2617DA720021616B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789FC2CA2617DA720021616B /* Assets.xcassets */; };
-		789FC2CE2617DA720021616B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789FC2CD2617DA720021616B /* Preview Assets.xcassets */; };
 		789FC2E32617DCC80021616B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2E22617DCC80021616B /* FirebaseFirestore */; };
 		789FC2E52617DCC80021616B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2E42617DCC80021616B /* FirebaseDatabase */; };
 		789FC2E72617DCC80021616B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2E62617DCC80021616B /* FirebaseAnalytics */; };
@@ -277,7 +277,7 @@
 				};
 			};
 			buildConfigurationList = 789FC2BE2617DA700021616B /* Build configuration list for PBXProject "TopSecret" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -302,8 +302,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				789FC2CE2617DA720021616B /* Preview Assets.xcassets in Resources */,
 				62A86E3D265D59CD0059E950 /* GoogleService-Info.plist in Resources */,
+				6290119C267BE56D00A226EF /* Preview Assets.xcassets in Resources */,
 				789FC2CB2617DA720021616B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
