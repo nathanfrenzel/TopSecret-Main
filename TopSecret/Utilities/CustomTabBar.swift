@@ -18,11 +18,11 @@ struct CustomTabBar: View {
             
             TabBarButton(image: "map", selectedTab: $selectedTab)
 
-            TabBarButton(image: "house", selectedTab: $selectedTab)
+            TabBarButton(image: "plus", selectedTab: $selectedTab)
 
             TabBarButton(image: "calendar.circle", selectedTab: $selectedTab)
 
-            TabBarButton(image: "person", selectedTab: $selectedTab)
+            TabBarButton(image: "house", selectedTab: $selectedTab)
 
         }
         .padding()

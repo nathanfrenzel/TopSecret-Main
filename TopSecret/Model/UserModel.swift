@@ -12,8 +12,7 @@ struct User : Identifiable{
     var username: String
     var email: String
     var password: String
-    var firstname: String
-    var lastname: String
+    var fullname: String
     
 
 
@@ -22,8 +21,7 @@ init(dictionary: [String:Any]) {
     self.username = dictionary["username"] as? String ?? ""
     self.email = dictionary["email"] as? String ?? ""
     self.password = dictionary["password"] as? String ?? ""
-    self.firstname = dictionary["firstname"] as? String ?? ""
-    self.lastname = dictionary["lastname"] as? String ?? ""
+    self.fullname = dictionary["fullname"] as? String ?? ""
 }
 
     

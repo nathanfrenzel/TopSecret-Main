@@ -17,6 +17,8 @@ class UserAuthViewModel : ObservableObject {
     @Published var startingRegistering = false
     @Published var startingLoggingIn = false
     
+    static let shared = UserAuthViewModel()
+    
     
     //When this VM is initialized userSession is initialized to the current user signed in
     init(){

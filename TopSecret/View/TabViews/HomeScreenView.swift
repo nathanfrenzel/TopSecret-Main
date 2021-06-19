@@ -12,10 +12,15 @@ struct HomeScreenView: View {
     @EnvironmentObject var userAuthViewModel : UserAuthViewModel
     
     var body: some View {
-        
         ZStack{
             VStack{
-              //TODO
+                Text("Posts")
+                
+                Text("Polls")
+                
+                Text("Events")
+                
+                Text("And more")
             }
         }
     }
