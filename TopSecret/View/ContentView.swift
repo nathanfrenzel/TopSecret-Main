@@ -58,7 +58,7 @@ struct ContentView: View {
                                     .frame(width: 128, height: 128)
                             }.tag(4)
                             .onAppear { isShowingNewPostView = true }
-                    }
+                    }.accentColor(.white)
                     .foregroundColor(.gray)
                     .background(Color.gray)
                     .toolbar {
