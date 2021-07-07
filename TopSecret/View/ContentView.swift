@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel : UserAuthViewModel
+    @State var selectedOption: String = "text"
     @State var isShowingNewPostView = true
     @State var selectedTab = 0
     @State var storedTab = 0
@@ -50,7 +51,7 @@ struct ContentView: View {
                                     .frame(width: 128, height: 128)
                             }.tag(3)
                             .onAppear{storedTab = 3}
-                        AddContentView(isPresented: $isShowingNewPostView, selectedTab: $selectedTab, storedTab: $storedTab)
+                        AddContentView(isPresented: $isShowingNewPostView, selectedTab: $selectedTab, storedTab: $storedTab, selectedOption: $selectedOption)
                             .tabItem {
                                 Image(systemName: "plus")
                                     .scaledToFill()
@@ -64,7 +65,7 @@ struct ContentView: View {
                     .toolbar {
                         
                         ToolbarItem(placement: .navigationBarLeading, content: {
-                            Button(action: { }, label: {
+                            Button(action: { viewModel.signOut() }, label: {
                                     Image("Hamburger_icon")
                                     .resizable()
                                     .frame(width: 32, height: 32)
@@ -79,15 +80,13 @@ struct ContentView: View {
                         
                         ToolbarItem(placement: .navigationBarTrailing, content: {
                             Button(action: {}, label: {
-                                Image("addGroup")
+                                Image(systemName: "person.2.fill")
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 32, height: 32)
-                                    
                             })
                         })
                     }
-                }
+                }.accentColor(Color("iconColor"))
             }else{
                RegisterView()
             }
