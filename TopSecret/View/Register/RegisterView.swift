@@ -15,11 +15,9 @@ import SwiftUI
 import Combine
 
 struct RegisterView: View {
-    
     @EnvironmentObject var viewModel : UserAuthViewModel
     @StateObject var registerVVM = RegisterValidationViewModel()
 
-    
     @State var color = Color.black.opacity(0.7)
     @State var visible = false
     @State var showRegisterView = false
@@ -34,12 +32,9 @@ struct RegisterView: View {
                     Color.themeBackground
                         .ignoresSafeArea(.all)
                     
-                    
-                    VStack{
-                        
+                    VStack {
                         
                         Spacer()
-                        
                         
                         TextField("Email", text: self.$registerVVM.email, onEditingChanged: { _ in
                             self.registerVVM.email = self.registerVVM.email.lowercased()
@@ -58,15 +53,12 @@ struct RegisterView: View {
                                 }else{
                                     SecureField("Password",text: self.$registerVVM.password)
                                         .autocapitalization(.none)
-                                    
                                 }
-                            }
-                            
-                          
-                        .padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
-                        .padding(.top, 25)
-                        HStack(spacing: 15){
-                            
+                            }.padding()
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.password != "" ? Color.themeForeground : self.color, lineWidth: 2))
+                            .padding(.top, 25)
+                        
+                        HStack(spacing: 15) {
                             VStack{
                                 if self.visible {
                                     TextField("Enter Password Again", text: self.$registerVVM.rePassword)
@@ -74,7 +66,6 @@ struct RegisterView: View {
                                 }else{
                                     SecureField("Enter Password Again",text: self.$registerVVM.rePassword)
                                         .autocapitalization(.none)
-                                    
                                 }
                             }
                             
@@ -84,8 +75,6 @@ struct RegisterView: View {
                                 Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
                                     .foregroundColor(self.color)
                             })
-                            
-                          
                         }.padding()  .background(RoundedRectangle(cornerRadius: 4).stroke(self.registerVVM.rePassword != "" ? Color.themeForeground : self.color, lineWidth: 2))
                         .padding(.top, 25)
                         
