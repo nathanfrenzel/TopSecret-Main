@@ -39,30 +39,33 @@ struct PostViewFilterOptions: View {
 
                 Text("Content Options")
                     .font(.system(size: 20, weight: .bold))
+                    .padding(.top, 4)
                     .foregroundColor(.white)
                 
                 //present available content options
-                GeometryReader { math in
-                    HStack {
-                        ForEach(PostFilterOptions.allCases, id: \.self) { option in
-                            Button(action: {
-                                self.selectedOption = option
-                            }, label: {
-                                HStack {
-                                    Image(systemName: option.symbol)
-                                        .foregroundColor(.white)
-                                    
-                                    Text(option.title)
-                                        .foregroundColor(.white)
-                                }
-                            })
-                            .frame(width: math.size.width * 0.32)
-                            .background(
-                                Rectangle()
-                                    .frame(height: math.size.height * 0.2)
-                                    .cornerRadius(20)
-                                    .foregroundColor(Color("OptionsColor"))
-                            )
+                ZStack(alignment: .bottom) {
+                    GeometryReader { math in
+                        HStack {
+                            ForEach(PostFilterOptions.allCases, id: \.self) { option in
+                                Button(action: {
+                                    self.selectedOption = option
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: option.symbol)
+                                            .foregroundColor(.white)
+                                        
+                                        Text(option.title)
+                                            .foregroundColor(.white)
+                                    }
+                                })
+                                .frame(width: math.size.width * 0.32)
+                                .background(
+                                    Rectangle()
+                                        .frame(height: math.size.height * 1)
+                                        .cornerRadius(20)
+                                        .foregroundColor(Color("OptionsColor"))
+                                )
+                            }
                         }
                     }
                 }
