@@ -42,9 +42,14 @@ struct FullScreenPostView: View {
                         .cornerRadius(32)
                 }))
                 Spacer()
-                
-                HStack {
-                    PostViewFilterOptions(selectedOption: $selectedOption)
+               
+                GeometryReader { maths in
+                    ZStack {
+                        HStack {
+                            PostViewFilterOptions(selectedOption: $selectedOption)
+                        }
+                    }.frame(width: maths.size.width)
+                    .cornerRadius(30)
                 }
             }
         }

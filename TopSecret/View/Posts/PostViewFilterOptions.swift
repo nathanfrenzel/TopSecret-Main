@@ -37,29 +37,33 @@ struct PostViewFilterOptions: View {
         ZStack {
             VStack {
                 Text("Content Options")
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
                 
                 //present available content options
-                HStack {
-                    ForEach(PostFilterOptions.allCases, id: \.self) { option in
-                        Button(action: {
-                            self.selectedOption = option
-                        }, label: {
-                            HStack {
-                                Image(systemName: option.symbol)
-                                    .frame(width: 24, height: 24)
-                                    .foregroundColor(.white)
-                                
-                                Text(option.title)
-                                    .font(.system(size: 24, weight: .semibold))
-                                    .foregroundColor(.white)
-                            }
-                        }).background(
-                            Capsule()
-                                .foregroundColor(Color("OptionsColor"))
-                        )
+                GeometryReader { math in
+                    HStack(alignment: .center) {
+                        ForEach(PostFilterOptions.allCases, id: \.self) { option in
+                            Button(action: {
+                                self.selectedOption = option
+                            }, label: {
+                                HStack {
+                                    Image(systemName: option.symbol)
+                                        .foregroundColor(.white)
+                                    
+                                    Text(option.title)
+                                        .foregroundColor(.white)
+                                }
+                            })
+                            .frame(width: math.size.width * 0.32)
+                            .background(
+                                Rectangle()
+                                    .cornerRadius(20)
+                                    .foregroundColor(Color("OptionsColor"))
+                            )
+                        }
                     }
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
         }
     }
