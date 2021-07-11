@@ -37,21 +37,26 @@ struct FullScreenPostView: View {
                 .navigationBarItems(leading: Button(action: { isPresented.toggle(); selectedTab = storedTab }, label: {
                     Text("Cancel")
                         .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .font(.system(size: 15, weight: .semibold))
                         .background(Color("ButtonColor"))
                         .foregroundColor(.white)
                         .cornerRadius(32)
                 }))
                 Spacer()
                
-                GeometryReader { maths in
-                    ZStack {
-                        HStack {
-                            PostViewFilterOptions(selectedOption: $selectedOption)
-                        }
-                    }.frame(width: maths.size.width)
-                    .cornerRadius(30)
+                ZStack(alignment:.bottom) {
+                    GeometryReader { maths in
+                        PostViewFilterOptions(selectedOption: $selectedOption)
+                            .frame(width: maths.size.width, height: maths.size.height * 0.5)
+                            .cornerRadius(30)
+                    }
                 }
             }
         }
     }
 }
+
+
+
+

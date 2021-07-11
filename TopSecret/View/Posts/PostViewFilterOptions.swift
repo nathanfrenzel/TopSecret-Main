@@ -36,13 +36,14 @@ struct PostViewFilterOptions: View {
     var body: some View {
         ZStack {
             VStack {
+
                 Text("Content Options")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(.white)
                 
                 //present available content options
                 GeometryReader { math in
-                    HStack(alignment: .center) {
+                    HStack {
                         ForEach(PostFilterOptions.allCases, id: \.self) { option in
                             Button(action: {
                                 self.selectedOption = option
@@ -58,6 +59,7 @@ struct PostViewFilterOptions: View {
                             .frame(width: math.size.width * 0.32)
                             .background(
                                 Rectangle()
+                                    .frame(height: math.size.height * 0.2)
                                     .cornerRadius(20)
                                     .foregroundColor(Color("OptionsColor"))
                             )
