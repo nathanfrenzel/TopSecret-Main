@@ -38,7 +38,7 @@ struct PostViewFilterOptions: View {
             VStack {
 
                 Text("Content Options")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 20, weight: .semibold))
                     .padding(.top, 4)
                     .foregroundColor(.white)
                 
@@ -63,7 +63,7 @@ struct PostViewFilterOptions: View {
                                     Rectangle()
                                         .frame(height: math.size.height * 1)
                                         .cornerRadius(20)
-                                        .foregroundColor(Color("OptionsColor"))
+                                        .foregroundColor(Color("ButtonColor"))
                                 )
                             }
                         }
