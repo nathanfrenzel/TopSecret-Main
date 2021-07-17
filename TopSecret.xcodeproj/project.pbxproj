@@ -124,6 +124,7 @@
 		7887ADDB262504F900D9FC21 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
+				782C89A826A3514A0059CBDA /* SideBarView.swift */,
 				62A86E3E265D684F0059E950 /* AddContentView.swift */,
 				789FC3022618C24B0021616B /* HomeScreenView.swift */,
 				784A0E1B261B6E8E0092284B /* SettingsView.swift */,
@@ -202,7 +203,6 @@
 				7887ADEE26267F5C00D9FC21 /* Login */,
 				7887ADE0262513C600D9FC21 /* Register */,
 				7887ADDB262504F900D9FC21 /* TabViews */,
-				782C89A826A3514A0059CBDA /* SideBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
