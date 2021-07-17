@@ -44,13 +44,10 @@ struct RegisterUsernameView : View {
                 .ignoresSafeArea(.all)
             VStack{
                 
-                
                 Text("Please pick a Unique Username!")
                     .fontWeight(.bold)
                     .foregroundColor(Color.themeForeground)
                     .padding(.top, 55)
-                
-                
                 
                 //username shit
                 HStack(spacing: 15){
@@ -62,11 +59,7 @@ struct RegisterUsernameView : View {
                                 checkUsername()
                             }
                         }
-                    
-                    
-                    
-          
-                    
+    
                     Image(systemName: availableImage)
                         .foregroundColor(color)
                     
@@ -75,14 +68,10 @@ struct RegisterUsernameView : View {
                 .padding(.top, 25)
                 .padding(.horizontal,25)
                 
-                
-                
-                
-                
-                
                 NavigationLink(destination: FullNameRegisterView(username: $registerVVM.username, email: $email, password: $password), isActive: $goNext) {
                     EmptyView()
                 }
+                
                 //Next Button
                 Button(action: {
                     //TODO
@@ -114,19 +103,11 @@ struct RegisterUsernameView : View {
                 .cornerRadius(10)
                 .padding(.top,25)
                 
-                
-                
-                
             }//end of vstack
-            
-            
             .navigationBarTitle("Create A Username")
             .foregroundColor(Color.themeForeground)
         }//end of zstack
         
-        
-        
-        
-        
+     
     }
 }

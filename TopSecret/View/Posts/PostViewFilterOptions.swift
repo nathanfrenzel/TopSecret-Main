@@ -35,16 +35,16 @@ struct PostViewFilterOptions: View {
     
     var body: some View {
         ZStack {
-            VStack {
-
-                Text("Content Options")
-                    .font(.system(size: 20, weight: .semibold))
-                    .padding(.top, 4)
-                    .foregroundColor(.white)
-                
-                //present available content options
-                ZStack(alignment: .bottom) {
-                    GeometryReader { math in
+            GeometryReader { math in
+                VStack(spacing: 12) {
+                    
+                    Text("Content Options")
+                        .font(.system(size: 20, weight: .semibold))
+                        .padding(.top, 4)
+                        .foregroundColor(.white)
+                    
+                    //present available content options
+                    ZStack(alignment: .bottom) {
                         HStack {
                             ForEach(PostFilterOptions.allCases, id: \.self) { option in
                                 Button(action: {
@@ -61,7 +61,7 @@ struct PostViewFilterOptions: View {
                                 .frame(width: math.size.width * 0.32)
                                 .background(
                                     Rectangle()
-                                        .frame(height: math.size.height * 1)
+                                        .frame(height: math.size.height * 0.5)
                                         .cornerRadius(20)
                                         .foregroundColor(Color("ButtonColor"))
                                 )

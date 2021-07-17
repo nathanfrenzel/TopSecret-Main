@@ -28,14 +28,14 @@ struct FullScreenPostView: View {
                     HStack(alignment: .top, spacing: 8) {
                         Text(viewModel.user?.username ?? "")
                             .font(.system(size: 15, weight: .bold))
-                            .padding(4)
-                            .padding(.vertical, 10)
+                            .padding(.vertical, 12)
+                            .padding(2)
                         
                         TextArea("What's Happening?", text: $captionText)
                             .font(.system(size: 15, weight: .semibold))
-                        
-                        
-                    }.navigationTitle("Top Secret")
+
+                    }
+                    .navigationTitle("Top Secret")
                     .navigationBarItems(leading: Button(action: { isPresented.toggle(); selectedTab = storedTab }, label: {
                         Text("Cancel")
                             .padding(.horizontal, 12)
@@ -49,13 +49,14 @@ struct FullScreenPostView: View {
                    
                     ZStack(alignment:.bottom) {
                         RoundedRectangle(cornerSize: CGSize(width: 20,height: 10))
+                            .ignoresSafeArea()
                             .foregroundColor(Color("TestColor"))
                         GeometryReader { maths in
                             PostViewFilterOptions(selectedOption: $selectedOption)
                                 .frame(width: maths.size.width, height: maths.size.height * 0.5)
                                 .padding(.top, 10)
                         }.frame(width: geometry.size.width * 0.9)
-                    }.frame(height: geometry.size.height * 0.2)
+                    }.frame(height: geometry.size.height * 0.15)
                 }
             }
         }

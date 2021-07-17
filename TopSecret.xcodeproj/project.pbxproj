@@ -12,6 +12,7 @@
 		6290119C267BE56D00A226EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789FC2CD2617DA720021616B /* Preview Assets.xcassets */; };
 		62A86E3D265D59CD0059E950 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A86E3C265D59CD0059E950 /* GoogleService-Info.plist */; };
 		62A86E3F265D684F0059E950 /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A86E3E265D684F0059E950 /* AddContentView.swift */; };
+		62D5CBDF2689204000CA37C9 /* PostViewFilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D5CBDE2689204000CA37C9 /* PostViewFilterOptions.swift */; };
 		62FD065626754EB600C1CEBE /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FD065526754EB600C1CEBE /* PostCell.swift */; };
 		62FD065A2675513800C1CEBE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FD06592675513800C1CEBE /* PostModel.swift */; };
 		62FD065C2675656300C1CEBE /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FD065B2675656300C1CEBE /* UploadPostViewModel.swift */; };
@@ -51,6 +52,7 @@
 		6290119A267B748000A226EF /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		62A86E3C265D59CD0059E950 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62A86E3E265D684F0059E950 /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
+		62D5CBDE2689204000CA37C9 /* PostViewFilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewFilterOptions.swift; sourceTree = "<group>"; };
 		62FD065526754EB600C1CEBE /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		62FD06592675513800C1CEBE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		62FD065B2675656300C1CEBE /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
@@ -110,7 +112,9 @@
 		62FD06632679455D00C1CEBE /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				62FD065526754EB600C1CEBE /* PostCell.swift */,
 				6290119726797A1400A226EF /* FullScreenPostView.swift */,
+				62D5CBDE2689204000CA37C9 /* PostViewFilterOptions.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -172,9 +176,9 @@
 				789FC2D82617DA910021616B /* ViewModel */,
 				789FC2D72617DA8B0021616B /* Model */,
 				789FC2D62617DA840021616B /* View */,
-				789FC2CA2617DA720021616B /* Assets.xcassets */,
 				789FC2CF2617DA720021616B /* Info.plist */,
 				62A86E3C265D59CD0059E950 /* GoogleService-Info.plist */,
+				789FC2CA2617DA720021616B /* Assets.xcassets */,
 				789FC2CC2617DA720021616B /* Preview Content */,
 			);
 			path = TopSecret;
@@ -196,7 +200,6 @@
 				7887ADE0262513C600D9FC21 /* Register */,
 				7887ADDB262504F900D9FC21 /* TabViews */,
 				789FC2C82617DA700021616B /* ContentView.swift */,
-				62FD065526754EB600C1CEBE /* PostCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				7887ADEC2626314900D9FC21 /* PasswordStatusModel.swift in Sources */,
 				62FD065E26781F8200C1CEBE /* VotingView.swift in Sources */,
 				789FC2F22617DDF40021616B /* LoginView.swift in Sources */,
+				62D5CBDF2689204000CA37C9 /* PostViewFilterOptions.swift in Sources */,
 				788C7B57261A2A3100E0C54C /* HomeScreenViewModel.swift in Sources */,
 				789FC2F52617E9C00021616B /* RegisterView.swift in Sources */,
 				789FC2C92617DA700021616B /* ContentView.swift in Sources */,
