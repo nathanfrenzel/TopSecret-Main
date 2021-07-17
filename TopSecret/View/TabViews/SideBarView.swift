@@ -10,7 +10,7 @@ import SwiftUI
 struct SideBarView: View {
     var body: some View {
         VStack{
-            Text("Current Group: Top Secret")
+            Text("dick")
             
             Text("Profile")
             
