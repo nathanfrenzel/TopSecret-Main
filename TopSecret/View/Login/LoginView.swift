@@ -22,7 +22,7 @@ struct LoginView: View {
                 VStack(spacing: 30){
                 VStack{
                     Image("FinishedIcon").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
-                    Text("Top Secret")
+                    Text("Top Secrett")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(Color("Foreground"))
