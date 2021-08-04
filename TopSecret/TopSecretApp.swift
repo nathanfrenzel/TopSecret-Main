@@ -17,7 +17,9 @@ struct TopSecretApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(UserAuthViewModel())
+            NavigationView{
+                LoginView()
+            }
         }
     }
 }
