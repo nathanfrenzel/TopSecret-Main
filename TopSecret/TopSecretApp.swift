@@ -20,7 +20,7 @@ struct TopSecretApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeScreenView().environmentObject(UserAuthViewModel())
+            ContentView().environmentObject(UserAuthViewModel())
         }
     }
 }

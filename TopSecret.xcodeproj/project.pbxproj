@@ -24,7 +24,7 @@
 		78A61F1B26BB12BC00671021 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F1A26BB12BC00671021 /* CustomTextField.swift */; };
 		78A61F1E26BB19F700671021 /* RegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F1D26BB19F700671021 /* RegisterEmailView.swift */; };
 		78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */; };
-		78B2379526DD159100052E69 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2379426DD159100052E69 /* HomeScreenView.swift */; };
+		78B2379526DD159100052E69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2379426DD159100052E69 /* ContentView.swift */; };
 		78B8DD9226CDBCFF00E8FE00 /* UserAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */; };
 		78B8DD9626CDC08100E8FE00 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8DD9526CDC08100E8FE00 /* Constants.swift */; };
 		78D1A72126DE98CA0083FE2C /* RegisterPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A72026DE98CA0083FE2C /* RegisterPhoneView.swift */; };
@@ -33,6 +33,7 @@
 		78D1A73126DEC3D50083FE2C /* EnterFullName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A73026DEC3D50083FE2C /* EnterFullName.swift */; };
 		78D1A73426DEC56F0083FE2C /* EnterBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A73326DEC56F0083FE2C /* EnterBirthday.swift */; };
 		78D1A73726DEC6050083FE2C /* CreatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A73626DEC6050083FE2C /* CreatePassword.swift */; };
+		78D1A74226DEDF320083FE2C /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A74126DEDF320083FE2C /* MessageListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,7 @@
 		78A61F1A26BB12BC00671021 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		78A61F1D26BB19F700671021 /* RegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailView.swift; sourceTree = "<group>"; };
 		78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		78B2379426DD159100052E69 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		78B2379426DD159100052E69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewModel.swift; sourceTree = "<group>"; };
 		78B8DD9526CDC08100E8FE00 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		78D1A72026DE98CA0083FE2C /* RegisterPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhoneView.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		78D1A73026DEC3D50083FE2C /* EnterFullName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFullName.swift; sourceTree = "<group>"; };
 		78D1A73326DEC56F0083FE2C /* EnterBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterBirthday.swift; sourceTree = "<group>"; };
 		78D1A73626DEC6050083FE2C /* CreatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePassword.swift; sourceTree = "<group>"; };
+		78D1A74126DEDF320083FE2C /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,6 @@
 			children = (
 				78A61F0C26B9B79800671021 /* LoginView.swift */,
 				78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */,
-				78B2379426DD159100052E69 /* HomeScreenView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -138,6 +139,7 @@
 		789FC2D62617DA840021616B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78D1A73F26DEDD7E0083FE2C /* Tabs */,
 				78D1A72326DE99040083FE2C /* Register */,
 				7887ADEE26267F5C00D9FC21 /* Login */,
 			);
@@ -182,6 +184,23 @@
 				78D1A73626DEC6050083FE2C /* CreatePassword.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		78D1A73F26DEDD7E0083FE2C /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A74026DEDED50083FE2C /* ChatTab */,
+				78B2379426DD159100052E69 /* ContentView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		78D1A74026DEDED50083FE2C /* ChatTab */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A74126DEDF320083FE2C /* MessageListView.swift */,
+			);
+			path = ChatTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A61F1B26BB12BC00671021 /* CustomTextField.swift in Sources */,
+				78D1A74226DEDF320083FE2C /* MessageListView.swift in Sources */,
 				78D1A73426DEC56F0083FE2C /* EnterBirthday.swift in Sources */,
 				78D1A72126DE98CA0083FE2C /* RegisterPhoneView.swift in Sources */,
 				78A61F1E26BB19F700671021 /* RegisterEmailView.swift in Sources */,
@@ -277,7 +297,7 @@
 				78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */,
 				789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */,
 				78D1A72626DE9B360083FE2C /* EnterCode.swift in Sources */,
-				78B2379526DD159100052E69 /* HomeScreenView.swift in Sources */,
+				78B2379526DD159100052E69 /* ContentView.swift in Sources */,
 				78D1A73126DEC3D50083FE2C /* EnterFullName.swift in Sources */,
 				78D1A72E26DEA1590083FE2C /* CreateUsername.swift in Sources */,
 				78B8DD9226CDBCFF00E8FE00 /* UserAuthViewModel.swift in Sources */,

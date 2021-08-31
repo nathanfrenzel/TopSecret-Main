@@ -57,6 +57,11 @@ class UserAuthViewModel: ObservableObject {
         }
     }
     
+    func resetPassword(email: String){
+        Auth.auth().sendPasswordReset(withEmail: email) { (err) in
+            print("You have been sent an email to reset your password!")
+        }
+    }
     
     
     func signIn(withEmail email: String, password: String){

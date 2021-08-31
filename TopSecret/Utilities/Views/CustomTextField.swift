@@ -23,9 +23,9 @@ struct CustomTextField: View {
                     }
                     
                     if isSecure {
-                        SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,7)
+                        SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
                     }else{
-                        TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,7)
+                        TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
                     }
                     
                 }.background(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 2)).foregroundColor(Color("Foreground")).padding(.horizontal)

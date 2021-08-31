@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-struct HomeScreenView: View {
+struct ContentView: View {
     @EnvironmentObject var vm : UserAuthViewModel
     var body: some View {
+        
+        //if there is a user logged in then go past login screen
         if vm.userSession != nil{
             VStack{
-                Text("Successfuly logged in. Welcome \(vm.user?.username ?? " ")")
-                Button(action: {
-                    vm.signOut()
-                }, label:{
-                    Text("Sign Out!")
-                })
+               
             }
             
         }else{
+            //if there is no user logged in, the screen is put to the loginview
             LoginView( vm: _vm)
         }
     }
