@@ -10,27 +10,48 @@ import SwiftUI
 struct ForgotPasswordView: View {
     
     @Binding var showForgotPasswordView: Bool
+    @State var email: String = ""
+    @State var isNext: Bool = false
     
     var body: some View {
         ZStack{
             Color("Background")
             VStack{
-                VStack{
-                Image("FinishedIcon").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100).padding(.top,10)
-                }.padding(.top,50)
+                
+                Text("Forgot Password?").foregroundColor(Color("Foreground")).fontWeight(.bold).font(.largeTitle).padding(.bottom,10)
+                
+                
+                
+                CustomTextField(text: $email, placeholder: "email", isSecure: false, hasSymbol: false,symbol: "none").padding(.horizontal,20)
+                
+                
+                
+                Button(action: {
+                    self.isNext.toggle()
+                }, label: {
+                    Text("Next")
+                        .foregroundColor(Color("Foreground"))
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width/1.5).background(Color("AccentColor")).cornerRadius(15)
+                }).padding()
                 
                 Button(action: {
                     showForgotPasswordView.toggle()
                 }, label: {
                     Text("back")
                 })
-            }
+                Spacer()
+                
+            }.padding(.top,70)
+            
+           
         }
+        
     }
 }
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView(showForgotPasswordView: .constant(true)).preferredColorScheme(.light)
+        ForgotPasswordView(showForgotPasswordView: .constant(true)).preferredColorScheme(.dark)
     }
 }

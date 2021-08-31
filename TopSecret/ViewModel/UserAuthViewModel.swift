@@ -14,6 +14,11 @@ class UserAuthViewModel: ObservableObject {
 
     @Published var user: User?
     @Published var userSession: FirebaseAuth.User?
+    @Published var email: String?
+    @Published var password: String?
+    @Published var username: String?
+    @Published var fullName: String?
+    @Published var birthday: Date?
     
     
     init(){
@@ -22,7 +27,7 @@ class UserAuthViewModel: ObservableObject {
         
     }
     
-    func registerUser(email: String, password: String, username: String, fullname: String){
+    func registerUser(email: String, password: String, username: String, fullname: String, birthday: Date){
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
             if let err = err{
                 print("DEBUG: ERROR: \(err.localizedDescription)")
@@ -34,7 +39,8 @@ class UserAuthViewModel: ObservableObject {
             let data = ["email": email,
                         "username": username,
                         "fullname": fullname,
-                        "uid": user.uid]
+                        "uid": user.uid,
+                        "birthday": birthday] as [String : Any]
             COLLECTION_USER.document(user.uid).setData(data){ _ in
                 self.userSession = user
                 self.fetchUser()

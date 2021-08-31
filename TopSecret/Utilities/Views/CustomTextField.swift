@@ -17,18 +17,18 @@ struct CustomTextField: View {
         ZStack{
             
             VStack{
-                HStack(spacing: 5){
+                HStack(){
                     if(hasSymbol){
-                    Image(systemName: symbol).padding(.leading)
+                    Image(systemName: symbol).padding(.leading,15)
                     }
                     
                     if isSecure {
-                        SecureField(placeholder, text: $text).padding()
+                        SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,7)
                     }else{
-                        TextField(placeholder,text: $text).padding()
+                        TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,7)
                     }
                     
-                }.background(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 2)).foregroundColor(Color("Foreground"))
+                }.background(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 2)).foregroundColor(Color("Foreground")).padding(.horizontal)
             }
         }
     }

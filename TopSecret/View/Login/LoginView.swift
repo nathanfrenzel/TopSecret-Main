@@ -17,30 +17,25 @@ struct LoginView: View {
         NavigationView {
            
              
-            ZStack{
+            ZStack(){
                 //Background color
                 Color("Background")
                     
                  
+              
+                
                     //Overal VStack
                 VStack{
                     
-                    HStack{
-                        Spacer()
-                    Button(action: {
-                        beginRegisterView.toggle()
-                    },label: {
-                        Text("Register")
-                    }).padding()
-                    }.padding(.top,30)
                     
+                 Spacer()
+                   
                     
-                    
-                Spacer()
                         
                  //Icon and Name
                 VStack{
-                   
+                    
+                  
                     Image("FinishedIcon").resizable().aspectRatio(contentMode: .fit).frame(width: 150, height: 150)
                     Text("Top Secret")
                         .font(.largeTitle)
@@ -61,7 +56,7 @@ struct LoginView: View {
                     }.padding(.horizontal)
                         //Forgot Password
                         HStack{
-                            
+                          
                             Spacer()
                             
                             Button(action: {
@@ -89,16 +84,28 @@ struct LoginView: View {
                     Spacer()
                 }
                 
-               
+                NavigationLink(
+                    destination: RegisterEmailView(vm: _vm),
+                    isActive: $beginRegisterView,
+                    label: {
+                        EmptyView()
+                    })
+                    
+                    
                 
             }.edgesIgnoringSafeArea(.all)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {
+                        self.beginRegisterView.toggle()
+                    },label:{
+                        Text("Register")
+                    })
+                }
         }
-        NavigationLink(
-            destination: RegisterEmailView(),
-            isActive: $beginRegisterView,
-            label: {
-                EmptyView()
-            })
+            
+        }
+        
     }
 }
 
