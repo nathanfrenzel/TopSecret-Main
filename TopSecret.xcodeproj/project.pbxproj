@@ -11,7 +11,6 @@
 		62CE5ADA26DEE44E00AE6ACC /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5AD926DEE44E00AE6ACC /* VotingView.swift */; };
 		62CE5ADC26DEE45600AE6ACC /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5ADB26DEE45600AE6ACC /* EventView.swift */; };
 		62CE5ADE26DEE46000AE6ACC /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */; };
-		62CE5AE026DEE46A00AE6ACC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5ADF26DEE46A00AE6ACC /* MessageView.swift */; };
 		62CE5AE226DEE48600AE6ACC /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5AE126DEE48600AE6ACC /* HomeScreenView.swift */; };
 		62CE5AE426DEE62300AE6ACC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62CE5AE326DEE62300AE6ACC /* GoogleService-Info.plist */; };
 		789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2C62617DA700021616B /* TopSecretApp.swift */; };
@@ -45,7 +44,6 @@
 		62CE5AD926DEE44E00AE6ACC /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		62CE5ADB26DEE45600AE6ACC /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
-		62CE5ADF26DEE46A00AE6ACC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		62CE5AE126DEE48600AE6ACC /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		62CE5AE326DEE62300AE6ACC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../TopSecret/TopSecret/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789FC2C32617DA700021616B /* TopSecret.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopSecret.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +101,7 @@
 				62CE5AD926DEE44E00AE6ACC /* VotingView.swift */,
 				62CE5ADB26DEE45600AE6ACC /* EventView.swift */,
 				62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */,
-				62CE5ADF26DEE46A00AE6ACC /* MessageView.swift */,
+				78D1A74126DEDF320083FE2C /* MessageListView.swift */,
 				62CE5AE126DEE48600AE6ACC /* HomeScreenView.swift */,
 			);
 			path = "Tabs (temp)";
@@ -221,7 +219,6 @@
 		78D1A74026DEDED50083FE2C /* ChatTab */ = {
 			isa = PBXGroup;
 			children = (
-				78D1A74126DEDF320083FE2C /* MessageListView.swift */,
 			);
 			path = ChatTab;
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				78D1A73726DEC6050083FE2C /* CreatePassword.swift in Sources */,
 				78A321D926D951390025E37A /* Email-PhoneRegisterCombine.swift in Sources */,
 				78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */,
-				62CE5AE026DEE46A00AE6ACC /* MessageView.swift in Sources */,
 				789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */,
 				78D1A72626DE9B360083FE2C /* EnterCode.swift in Sources */,
 				78B2379526DD159100052E69 /* ContentView.swift in Sources */,

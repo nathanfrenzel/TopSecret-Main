@@ -17,7 +17,7 @@ struct LoginView: View {
         NavigationView {
            
              
-            ZStack(){
+            ZStack{
                 //Background color
                 Color("Background")
                     
