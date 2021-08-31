@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
+    
+    @Binding var showForgotPasswordView: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color("Background")
+            VStack{
+                VStack{
+                Image("FinishedIcon").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100).padding(.top,10)
+                }.padding(.top,50)
+                
+                Button(action: {
+                    showForgotPasswordView.toggle()
+                }, label: {
+                    Text("back")
+                })
+            }
+        }
     }
 }
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView()
+        ForgotPasswordView(showForgotPasswordView: .constant(true)).preferredColorScheme(.light)
     }
 }

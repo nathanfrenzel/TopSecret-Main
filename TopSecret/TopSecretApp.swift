@@ -15,11 +15,12 @@ struct TopSecretApp: App {
         FirebaseApp.configure()
     }
     
+   
+   
+    
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                LoginView()
-            }
+            HomeScreenView().environmentObject(UserAuthViewModel())
         }
     }
 }

@@ -19,10 +19,14 @@
 		789FC2ED2617DCC80021616B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2EC2617DCC80021616B /* FirebaseAuth */; };
 		789FC2EF2617DCC80021616B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 789FC2EE2617DCC80021616B /* FirebaseMessaging */; };
 		789FC2F82618B9FC0021616B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC2F72618B9FC0021616B /* UserModel.swift */; };
+		78A321D926D951390025E37A /* Email-PhoneRegisterCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A321D826D951390025E37A /* Email-PhoneRegisterCombine.swift */; };
 		78A61F0D26B9B79800671021 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F0C26B9B79800671021 /* LoginView.swift */; };
 		78A61F1B26BB12BC00671021 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F1A26BB12BC00671021 /* CustomTextField.swift */; };
-		78A61F1E26BB19F700671021 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F1D26BB19F700671021 /* RegisterView.swift */; };
+		78A61F1E26BB19F700671021 /* RegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F1D26BB19F700671021 /* RegisterEmailView.swift */; };
 		78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */; };
+		78B2379526DD159100052E69 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2379426DD159100052E69 /* HomeScreenView.swift */; };
+		78B8DD9226CDBCFF00E8FE00 /* UserAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */; };
+		78B8DD9626CDC08100E8FE00 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8DD9526CDC08100E8FE00 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +37,14 @@
 		789FC2CD2617DA720021616B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		789FC2CF2617DA720021616B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		789FC2F72618B9FC0021616B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		78A321D826D951390025E37A /* Email-PhoneRegisterCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Email-PhoneRegisterCombine.swift"; sourceTree = "<group>"; };
 		78A61F0C26B9B79800671021 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		78A61F1A26BB12BC00671021 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		78A61F1D26BB19F700671021 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		78A61F1D26BB19F700671021 /* RegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailView.swift; sourceTree = "<group>"; };
 		78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		78B2379426DD159100052E69 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewModel.swift; sourceTree = "<group>"; };
+		78B8DD9526CDC08100E8FE00 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				78A61F0C26B9B79800671021 /* LoginView.swift */,
-				78A61F1D26BB19F700671021 /* RegisterView.swift */,
+				78A61F1D26BB19F700671021 /* RegisterEmailView.swift */,
 				78A61F2426BB1C7C00671021 /* ForgotPasswordView.swift */,
+				78B2379426DD159100052E69 /* HomeScreenView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -134,6 +143,8 @@
 		789FC2D82617DA910021616B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */,
+				78A321D826D951390025E37A /* Email-PhoneRegisterCombine.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -142,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				62901199267B747300A226EF /* Views */,
+				78B8DD9526CDC08100E8FE00 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -229,11 +241,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A61F1B26BB12BC00671021 /* CustomTextField.swift in Sources */,
-				78A61F1E26BB19F700671021 /* RegisterView.swift in Sources */,
+				78A61F1E26BB19F700671021 /* RegisterEmailView.swift in Sources */,
 				78A61F0D26B9B79800671021 /* LoginView.swift in Sources */,
 				789FC2F82618B9FC0021616B /* UserModel.swift in Sources */,
+				78A321D926D951390025E37A /* Email-PhoneRegisterCombine.swift in Sources */,
 				78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */,
 				789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */,
+				78B2379526DD159100052E69 /* HomeScreenView.swift in Sources */,
+				78B8DD9226CDBCFF00E8FE00 /* UserAuthViewModel.swift in Sources */,
+				78B8DD9626CDC08100E8FE00 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
