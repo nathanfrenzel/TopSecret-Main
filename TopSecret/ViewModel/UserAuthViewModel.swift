@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 
 class UserAuthViewModel: ObservableObject {
@@ -47,8 +48,16 @@ class UserAuthViewModel: ObservableObject {
                 print("DEBUG: Succesfully uploaded user data!")
             }
             
+            Auth.auth().currentUser?.sendEmailVerification(completion: { (err) in
+                
+            }) 
+            
+         
+            
         }
     }
+    
+    
     
     func signIn(withEmail email: String, password: String){
         

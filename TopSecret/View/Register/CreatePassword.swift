@@ -28,6 +28,7 @@ struct CreatePassword: View {
             
             Button(action: {
                 vm.registerUser(email: vm.email ?? "", password: password, username: vm.username ?? "", fullname: vm.fullName ?? "", birthday: vm.birthday ?? Date())
+                
             }, label: {
                 Text("Create Account")
                     .foregroundColor(Color("Foreground"))
