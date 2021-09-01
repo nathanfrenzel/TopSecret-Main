@@ -38,6 +38,8 @@
 		78D1A73426DEC56F0083FE2C /* EnterBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A73326DEC56F0083FE2C /* EnterBirthday.swift */; };
 		78D1A73726DEC6050083FE2C /* CreatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A73626DEC6050083FE2C /* CreatePassword.swift */; };
 		78D1A74226DEDF320083FE2C /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A74126DEDF320083FE2C /* MessageListView.swift */; };
+		78D1A74B26DEF08F0083FE2C /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A74A26DEF08F0083FE2C /* ChatListCell.swift */; };
+		78D1A74E26DEF0BD0083FE2C /* TabToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A74D26DEF0BD0083FE2C /* TabToolbarItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		78D1A73326DEC56F0083FE2C /* EnterBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterBirthday.swift; sourceTree = "<group>"; };
 		78D1A73626DEC6050083FE2C /* CreatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePassword.swift; sourceTree = "<group>"; };
 		78D1A74126DEDF320083FE2C /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
+		78D1A74A26DEF08F0083FE2C /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		78D1A74D26DEF0BD0083FE2C /* TabToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabToolbarItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				78A61F1A26BB12BC00671021 /* CustomTextField.swift */,
+				78D1A74D26DEF0BD0083FE2C /* TabToolbarItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,7 +106,7 @@
 				62CE5AD926DEE44E00AE6ACC /* VotingView.swift */,
 				62CE5ADB26DEE45600AE6ACC /* EventView.swift */,
 				62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */,
-				78D1A74126DEDF320083FE2C /* MessageListView.swift */,
+				78D1A74026DEDED50083FE2C /* ChatTab */,
 				62CE5AE126DEE48600AE6ACC /* HomeScreenView.swift */,
 			);
 			path = "Tabs (temp)";
@@ -159,6 +164,7 @@
 		789FC2D62617DA840021616B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78D1A74926DEF00C0083FE2C /* Cells */,
 				78D1A73F26DEDD7E0083FE2C /* Tabs */,
 				78D1A72326DE99040083FE2C /* Register */,
 				7887ADEE26267F5C00D9FC21 /* Login */,
@@ -209,9 +215,8 @@
 		78D1A73F26DEDD7E0083FE2C /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				62CE5AD826DEE43F00AE6ACC /* Tabs (temp) */,
-				78D1A74026DEDED50083FE2C /* ChatTab */,
 				78B2379426DD159100052E69 /* ContentView.swift */,
+				62CE5AD826DEE43F00AE6ACC /* Tabs (temp) */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -219,8 +224,17 @@
 		78D1A74026DEDED50083FE2C /* ChatTab */ = {
 			isa = PBXGroup;
 			children = (
+				78D1A74126DEDF320083FE2C /* MessageListView.swift */,
 			);
 			path = ChatTab;
+			sourceTree = "<group>";
+		};
+		78D1A74926DEF00C0083FE2C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A74A26DEF08F0083FE2C /* ChatListCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +330,7 @@
 				78A61F0D26B9B79800671021 /* LoginView.swift in Sources */,
 				789FC2F82618B9FC0021616B /* UserModel.swift in Sources */,
 				78D1A73726DEC6050083FE2C /* CreatePassword.swift in Sources */,
+				78D1A74B26DEF08F0083FE2C /* ChatListCell.swift in Sources */,
 				78A321D926D951390025E37A /* Email-PhoneRegisterCombine.swift in Sources */,
 				78A61F2526BB1C7C00671021 /* ForgotPasswordView.swift in Sources */,
 				789FC2C72617DA700021616B /* TopSecretApp.swift in Sources */,
@@ -323,6 +338,7 @@
 				78B2379526DD159100052E69 /* ContentView.swift in Sources */,
 				78D1A73126DEC3D50083FE2C /* EnterFullName.swift in Sources */,
 				78D1A72E26DEA1590083FE2C /* CreateUsername.swift in Sources */,
+				78D1A74E26DEF0BD0083FE2C /* TabToolbarItemView.swift in Sources */,
 				78B8DD9226CDBCFF00E8FE00 /* UserAuthViewModel.swift in Sources */,
 				62CE5ADE26DEE46000AE6ACC /* AddContentView.swift in Sources */,
 				78B8DD9626CDC08100E8FE00 /* Constants.swift in Sources */,

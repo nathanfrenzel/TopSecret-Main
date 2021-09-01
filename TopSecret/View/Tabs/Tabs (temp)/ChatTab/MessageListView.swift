@@ -16,42 +16,36 @@ struct MessageListView: View {
         NavigationView{
             ZStack{
                 Color("Background")
-                    
+                
                 VStack{
                     Picker("Options",selection: $selectedIndex){
                         ForEach(0..<options.count){ index in
                             Text(self.options[index]).tag(index)
                         }
-                    
                         
-                    
+                        
+                        
                     }.pickerStyle(SegmentedPickerStyle())
-                        
+                    
                     Spacer()
                     ScrollView(showsIndicators: false){
-                        ForEach(0..<100){ chat in
-                            Text("chat \(chat)")
+                        ForEach(0..<50){ chat in
+                            ChatListCell()
+                            Divider()
                         }
                     }
-                   
                 }.padding(.top,145)
-          
-               
-                    
-                    
-                    
-                    
-                    
-                    
                 
-            }
+            }.edgesIgnoringSafeArea(.all)
+            
+            
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action:{
                         //TODO
                     },label:{
-                        Text("Menu")
-                    })
+                        Image(systemName: "gear").resizable().frame(width: 32, height:32)
+                    }).accentColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .principal){
@@ -62,11 +56,11 @@ struct MessageListView: View {
                     Button(action:{
                         //TODO
                     },label:{
-                        Text("Add")
+                        Image(systemName: "plus.message")
                     })
                 }
-            
-        }.edgesIgnoringSafeArea(.all)
+                
+            }
         }
     }
 }
