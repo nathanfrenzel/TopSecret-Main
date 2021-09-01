@@ -30,7 +30,7 @@ struct MessageListView: View {
                     Spacer()
                     ScrollView(showsIndicators: false){
                         ForEach(0..<50){ chat in
-                            ChatListCell()
+                            
                             Divider()
                         }
                     }
@@ -44,8 +44,8 @@ struct MessageListView: View {
                     Button(action:{
                         //TODO
                     },label:{
-                        Image(systemName: "gear").resizable().frame(width: 32, height:32)
-                    }).accentColor(Color("AccentColor"))
+                        Image(systemName: "gear").resizable().frame(width: 32, height:32).accentColor(Color("AccentColor"))
+                    })
                 }
                 
                 ToolbarItem(placement: .principal){

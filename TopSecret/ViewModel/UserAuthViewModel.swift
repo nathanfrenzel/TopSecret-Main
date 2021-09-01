@@ -24,7 +24,7 @@ class UserAuthViewModel: ObservableObject {
     
     init(){
         userSession = Auth.auth().currentUser
-//        fetchUser()
+        fetchUser()
         
     }
     

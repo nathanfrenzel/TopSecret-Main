@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     
     @EnvironmentObject var vm : UserAuthViewModel
+    @State var showCreateGroupView: Bool = false
 
     
     var body: some View {
@@ -37,7 +38,9 @@ struct HomeScreenView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button(action: {}, label: {
+                    Button(action: {
+                        showCreateGroupView.toggle()
+                    }, label: {
                         Image(systemName: "person.3.fill")
                             .resizable()
                             .frame(width: 32, height: 32)
@@ -45,7 +48,9 @@ struct HomeScreenView: View {
                 })
               
             }
-           
+            .sheet(isPresented: $showCreateGroupView, content: {
+                Text("hello")
+            })
         }
     }
 }
