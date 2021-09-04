@@ -11,10 +11,10 @@ struct CreateGroupView: View {
     
     @EnvironmentObject var userVM : UserAuthViewModel
     @ObservedObject var groupVM = GroupViewModel()
-    @State var groupName: String = " "
+    @State var groupName: String = ""
     @State var memberLimit: Int = 0
-    @State var publicID : String = " "
-    @State var joinPublicID : String = " "
+    @State var publicID : String = ""
+    @State var joinPublicID : String = ""
 
     @Binding var goBack: Bool
     

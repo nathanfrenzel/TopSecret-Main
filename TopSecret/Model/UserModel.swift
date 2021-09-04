@@ -13,7 +13,7 @@ struct User : Identifiable {
     var email: String?
     var password: String?
     var fullname: String?
-    var groups: [Group]?
+    var groups: [Group] = []
     var birthday: Date?
     
 

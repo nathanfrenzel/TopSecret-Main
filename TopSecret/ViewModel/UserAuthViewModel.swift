@@ -89,25 +89,26 @@ class UserAuthViewModel: ObservableObject {
     
     func fetchUser(){
         guard let uid = userSession?.uid else {return}
-        fetchGroups()
-
+        
         COLLECTION_USER.document(uid).getDocument{ (snapshot, _) in
             guard let data = snapshot?.data() else {return}
             let user = User(dictionary: data)
             self.user = user
+            self.fetchGroups()
             print("Fetched User Data!")
         }
+        
     }
     
     func fetchGroups(){
         guard let uid = userSession?.uid else {return}
         
-        COLLECTION_USER.document(uid).collection("groups").getDocuments { [self] (snapshot, _) in
+        
+        COLLECTION_GROUP.whereField("users", arrayContains: uid).getDocuments { (snapshot, err) in
             guard let documents = snapshot?.documents else{
                 print("No documents")
                 return
             }
-            
             
             self.user?.groups = documents.map{ (queryDocumentSnapshot) -> Group in
                 let data = queryDocumentSnapshot.data()
@@ -116,23 +117,50 @@ class UserAuthViewModel: ObservableObject {
                 let membersAmount = data["membersAmount"] as? Int ?? 1
                 let publicID = data["publicID"] as? String ?? ""
                 let dateCreated = data["dateCreated"] as? Date ?? Date()
-                let users = data["users"] as? [User] ?? [User()]
-                
-                
+                let users = data["users"] as? [User.ID] ?? [" "]
+
+
                 return Group(dictionary: ["groupName": groupName,
                                           "memberLimit" : memberLimit,
                                           "membersAmount": membersAmount,
                                           "publicID" : publicID,
                                           "dateCreated": dateCreated,
-                                          "users":users,
-                                          "groups": self.user?.groups ?? [Group()]])
-                
+                                          "users":users])
+
             }
             
-            print("Successfully fetched user groups")
-            
-            
         }
+        
+//                COLLECTION_USER.document(uid).collection("groups").getDocuments { [self] (snapshot, _) in
+//                    guard let documents = snapshot?.documents else{
+//                        print("No documents")
+//                        return
+//                    }
+//
+//
+//                    self.user?.groups = documents.map{ (queryDocumentSnapshot) -> Group in
+//                        let data = queryDocumentSnapshot.data()
+//                        let groupName = data["groupName"] as? String ?? ""
+//                        let memberLimit = data["memberLimit"] as? Int ?? 1
+//                        let membersAmount = data["membersAmount"] as? Int ?? 1
+//                        let publicID = data["publicID"] as? String ?? ""
+//                        let dateCreated = data["dateCreated"] as? Date ?? Date()
+//                        let users = data["users"] as? [User.ID] ?? [" "]
+//
+//
+//                        return Group(dictionary: ["groupName": groupName,
+//                                                  "memberLimit" : memberLimit,
+//                                                  "membersAmount": membersAmount,
+//                                                  "publicID" : publicID,
+//                                                  "dateCreated": dateCreated,
+//                                                  "users":users])
+//
+//                    }
+//
+//                    print("Successfully fetched user groups")
+//
+//
+//                }
         
         
         

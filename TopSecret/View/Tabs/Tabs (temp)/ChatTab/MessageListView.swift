@@ -37,7 +37,7 @@ struct MessageListView: View {
                             NavigationLink(
                                 destination: ChatView(),
                                 label: {
-                                    ChatListCell(groupName: group.groupName ?? "")
+                                    ChatListCell(groupName: group.groupName ?? "", groupMembersCount: group.users?.count ?? 0 )
                                 })
                             Divider()
                          

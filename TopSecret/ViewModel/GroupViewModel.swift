@@ -29,30 +29,34 @@ class GroupViewModel: ObservableObject {
     }
     
     func joinGroup(publicID: String, userID: User.ID){
-
-        let query = COLLECTION_GROUP.whereField("publicID", isEqualTo: publicID)
         
-        query.getDocuments { (querySnapshot, err) in
+
+        //this finds the group in group list and adds user to its user list
+        let groupQuery = COLLECTION_GROUP.whereField("publicID", isEqualTo: publicID)
+
+        
+        
+        groupQuery.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("DEBUG: \(err.localizedDescription)")
                 return
             }
+            if querySnapshot!.documents.count == 0 {
+                print("unable to find group with code: \(publicID)")
+            }
+            
             for document in querySnapshot!.documents{
 
 
+                //updates the list of users
                 document.reference.updateData(["users":FieldValue.arrayUnion([userID ?? " "])])
                 print("sucesfully added user to group")
-                COLLECTION_USER.document(userID ?? " ").collection("groups").addDocument(data: document.data()) { (err) in
-                    if let err = err{
-                        print("DEBUG: \(err.localizedDescription)")
-                        return
-                    }
-                    print("sucesfully added group to user account")
-                }
+                
+             
             }
         }
-
-
+        
+        userVM?.fetchUser()
       
     }
     
@@ -71,19 +75,14 @@ class GroupViewModel: ObservableObject {
 
         
         
-        //adds user specific group
-        COLLECTION_USER.document(user[0] ?? " ").collection("groups").addDocument(data: data) { (err) in
-            if let err = err{
-                print("DEBUG: \(err.localizedDescription)")
-                return
-            }
-        }
 
         //adds group to group db
         COLLECTION_GROUP.document(group.id ?? " ").setData(data){ _ in
             print("DEBUG: Sucessfully created group")
         }
         
+        joinGroup(publicID: publicID, userID: user[0])
+
         self.userVM?.fetchUser()
 
         

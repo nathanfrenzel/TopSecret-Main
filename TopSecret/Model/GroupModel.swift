@@ -17,7 +17,7 @@ struct Group: Identifiable{
     var id : String?
     var dateCreated: Date?
     var memberLimit: Int?
-    var users: [User]?
+    var users: [User.ID]?
     
     init(dictionary: [String:Any]){
         self.id = UUID().uuidString
@@ -25,7 +25,7 @@ struct Group: Identifiable{
         self.publicID = dictionary["publicID"] as? String ?? ""
         self.dateCreated = dictionary["dateCreated"] as? Date ?? Date()
         self.memberLimit = dictionary["memberLimit"] as? Int ?? 1
-        self.users = dictionary["users"] as? [User] ?? [User()]
+        self.users = dictionary["users"] as? [User.ID] ?? [" "]
     }
     
     init(){

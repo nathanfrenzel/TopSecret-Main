@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatListCell: View {
     var groupName: String = ""
+    var groupMembersCount: Int = 0
     var body: some View {
         HStack{
             VStack{
@@ -22,7 +23,7 @@ struct ChatListCell: View {
                     Text("\(groupName)").fontWeight(.bold).foregroundColor(Color("Foreground"))
                     Text("@").foregroundColor(Color("AccentColor"))
                     Spacer()
-                    Text("9:01 PM").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
+                    Text("\(groupMembersCount) members").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
                 }
                 HStack{
                     Text("This is my message")
