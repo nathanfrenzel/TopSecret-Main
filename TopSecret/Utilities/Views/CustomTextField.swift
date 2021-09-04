@@ -13,6 +13,7 @@ struct CustomTextField: View {
     var isSecure: Bool
     var hasSymbol: Bool
     var symbol: String
+    var numbersOnly: Bool = false
     var body: some View {
         ZStack{
             
@@ -23,9 +24,19 @@ struct CustomTextField: View {
                     }
                     
                     if isSecure {
-                        SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
+                        
+                        if numbersOnly {
+                            SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15).keyboardType(.numberPad)
+                        }else{
+                            SecureField(placeholder, text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
+                        }
+                        
                     }else{
-                        TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
+                        if numbersOnly {
+                            TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15).keyboardType(.numberPad)
+                        }else{
+                            TextField(placeholder,text: $text).autocapitalization(.none).padding(.vertical).padding(.leading,15)
+                        }
                     }
                     
                 }.background(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 2)).foregroundColor(Color("Foreground")).padding(.horizontal)
@@ -34,8 +45,8 @@ struct CustomTextField: View {
     }
 }
 
-struct CustomTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTextField(text: .constant( ""),placeholder: "Email", isSecure: false, hasSymbol: true,  symbol: "envelope").preferredColorScheme(.dark)
-    }
-}
+//struct CustomTextField_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomTextField(text: .constant( ""),placeholder: "Email", isSecure: false, hasSymbol: true,  symbol: "envelope").preferredColorScheme(.dark)
+//    }
+//}

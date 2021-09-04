@@ -12,7 +12,9 @@ import FirebaseAuth
 
 
 class UserAuthViewModel: ObservableObject {
-
+    
+    
+    
     @Published var user: User?
     @Published var userSession: FirebaseAuth.User?
     @Published var email: String?
@@ -41,7 +43,9 @@ class UserAuthViewModel: ObservableObject {
                         "username": username,
                         "fullname": fullname,
                         "uid": user.uid,
-                        "birthday": birthday] as [String : Any]
+                        "birthday": birthday,
+                        
+            ] as [String : Any]
             COLLECTION_USER.document(user.uid).setData(data){ _ in
                 self.userSession = user
                 self.fetchUser()
@@ -52,7 +56,7 @@ class UserAuthViewModel: ObservableObject {
                 
             }) 
             
-         
+            
             
         }
     }
@@ -73,7 +77,7 @@ class UserAuthViewModel: ObservableObject {
             }
             self.userSession = result?.user
             self.fetchUser()
-          
+            
         }
         
     }
@@ -85,7 +89,8 @@ class UserAuthViewModel: ObservableObject {
     
     func fetchUser(){
         guard let uid = userSession?.uid else {return}
-        
+        fetchGroups()
+
         COLLECTION_USER.document(uid).getDocument{ (snapshot, _) in
             guard let data = snapshot?.data() else {return}
             let user = User(dictionary: data)
@@ -94,4 +99,42 @@ class UserAuthViewModel: ObservableObject {
         }
     }
     
+    func fetchGroups(){
+        guard let uid = userSession?.uid else {return}
+        
+        COLLECTION_USER.document(uid).collection("groups").getDocuments { [self] (snapshot, _) in
+            guard let documents = snapshot?.documents else{
+                print("No documents")
+                return
+            }
+            
+            
+            self.user?.groups = documents.map{ (queryDocumentSnapshot) -> Group in
+                let data = queryDocumentSnapshot.data()
+                let groupName = data["groupName"] as? String ?? ""
+                let memberLimit = data["memberLimit"] as? Int ?? 1
+                let membersAmount = data["membersAmount"] as? Int ?? 1
+                let publicID = data["publicID"] as? String ?? ""
+                let dateCreated = data["dateCreated"] as? Date ?? Date()
+                let users = data["users"] as? [User] ?? [User()]
+                
+                
+                return Group(dictionary: ["groupName": groupName,
+                                          "memberLimit" : memberLimit,
+                                          "membersAmount": membersAmount,
+                                          "publicID" : publicID,
+                                          "dateCreated": dateCreated,
+                                          "users":users,
+                                          "groups": self.user?.groups ?? [Group()]])
+                
+            }
+            
+            print("Successfully fetched user groups")
+            
+            
+        }
+        
+        
+        
+    }
 }

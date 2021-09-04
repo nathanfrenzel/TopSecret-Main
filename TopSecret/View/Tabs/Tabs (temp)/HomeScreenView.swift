@@ -49,7 +49,7 @@ struct HomeScreenView: View {
               
             }
             .sheet(isPresented: $showCreateGroupView, content: {
-                Text("hello")
+                CreateGroupView(goBack: $showCreateGroupView)
             })
         }
     }

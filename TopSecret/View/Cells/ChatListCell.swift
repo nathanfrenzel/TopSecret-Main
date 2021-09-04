@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatListCell: View {
+    var groupName: String = ""
     var body: some View {
         HStack{
             VStack{
@@ -18,7 +19,7 @@ struct ChatListCell: View {
             
             VStack{
                 HStack{
-                    Text("Top Secret").fontWeight(.bold).foregroundColor(Color("Foreground"))
+                    Text("\(groupName)").fontWeight(.bold).foregroundColor(Color("Foreground"))
                     Text("@").foregroundColor(Color("AccentColor"))
                     Spacer()
                     Text("9:01 PM").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
