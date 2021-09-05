@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     
     @EnvironmentObject var vm : UserAuthViewModel
+    @State var settingsOpen: Bool = false
     @State var showCreateGroupView: Bool = false
 
     
@@ -18,13 +19,14 @@ struct HomeScreenView: View {
             ZStack{
                 Color("Background")
                 VStack{
-                    Text("Home Screen!")
+                    Text("Welcome: \(vm.user?.username ?? "")")
                 }
-            }.edgesIgnoringSafeArea(.all)
+            }
+            .edgesIgnoringSafeArea(.all)
             .toolbar {
                 
                 ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button(action: { vm.signOut() }, label: {
+                    Button(action: { self.settingsOpen.toggle() }, label: {
                             Image("Hamburger_icon")
                             .resizable()
                             .frame(width: 32, height: 32)
@@ -32,9 +34,14 @@ struct HomeScreenView: View {
                 })
                 
                 ToolbarItem(placement: .principal) {
-                    Image("FinishedIcon")
-                        .resizable()
-                        .frame(width: 64, height: 64)
+                    Button(action:{
+                        
+                    }, label:{
+                        Image("FinishedIcon")
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                    })
+                   
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing, content: {
@@ -48,10 +55,14 @@ struct HomeScreenView: View {
                 })
               
             }
-            .sheet(isPresented: $showCreateGroupView, content: {
-                CreateGroupView(goBack: $showCreateGroupView)
+            .sheet(isPresented: $settingsOpen, content: {
+                SettingsMenuView(goBack: $settingsOpen)
             })
-        }
+           
+            
+        } .sheet(isPresented: $showCreateGroupView, content: {
+            CreateGroupView(goBack: $showCreateGroupView)
+        })
     }
 }
 

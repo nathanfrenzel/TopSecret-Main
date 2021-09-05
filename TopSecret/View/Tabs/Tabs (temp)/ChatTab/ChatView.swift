@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct ChatView: View {
-    
+    @ObservedObject var groupVM = GroupViewModel()
+    @EnvironmentObject var userVM : UserAuthViewModel
     var body: some View {
-        Text("Chat")
+        VStack{
+            Button(action: {
+                groupVM.leaveGroup()
+                userVM.fetchUser()
+            }, label: {
+                Text("Leave Group")
+            })
+        }
+        .onAppear{self.groupVM.setupUserVM(self.userVM)
+        }
     }
 }
 

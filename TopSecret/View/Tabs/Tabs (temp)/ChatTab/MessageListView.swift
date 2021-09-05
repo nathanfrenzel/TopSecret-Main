@@ -20,7 +20,7 @@ struct MessageListView: View {
             
             ZStack{
                 Color("Background")
-
+                if userVM.user?.groups.count != 0{
                 VStack{
                     Picker("Options",selection: $selectedIndex){
                         ForEach(0..<options.count){ index in
@@ -37,13 +37,21 @@ struct MessageListView: View {
                             NavigationLink(
                                 destination: ChatView(),
                                 label: {
-                                    ChatListCell(groupName: group.groupName ?? "", groupMembersCount: group.users?.count ?? 0 )
+                                    ChatListCell(groupName: group.groupName ?? "", groupMembersCount: group.memberAmount )
                                 })
                             Divider()
                          
                         }
+                        Button(action: {
+                            userVM.fetchUser()
+                        }, label: {
+                            Text("Refresh")
+                        })
                     }
                 }.padding(.top,145)
+                }else{
+                   Text("It looks you don't have any chats!")
+                }
 
             }.edgesIgnoringSafeArea(.all)
 

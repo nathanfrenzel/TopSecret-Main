@@ -95,6 +95,7 @@ class UserAuthViewModel: ObservableObject {
             let user = User(dictionary: data)
             self.user = user
             self.fetchGroups()
+            
             print("Fetched User Data!")
         }
         
@@ -112,57 +113,30 @@ class UserAuthViewModel: ObservableObject {
             
             self.user?.groups = documents.map{ (queryDocumentSnapshot) -> Group in
                 let data = queryDocumentSnapshot.data()
-                let groupName = data["groupName"] as? String ?? ""
-                let memberLimit = data["memberLimit"] as? Int ?? 1
-                let membersAmount = data["membersAmount"] as? Int ?? 1
-                let publicID = data["publicID"] as? String ?? ""
-                let dateCreated = data["dateCreated"] as? Date ?? Date()
-                let users = data["users"] as? [User.ID] ?? [" "]
+               
 
+                let group = Group(dictionary: data)
+                
+                if group.memberAmount == 0{
+                    COLLECTION_GROUP.document(group.id ?? "").delete() { err in
+                        
+                        if let err = err {
+                            print("Unable to delete document")
+                        }else{
+                            print("sucessfully deleted document")
+                        }
+                        
+                    }
+                }
 
-                return Group(dictionary: ["groupName": groupName,
-                                          "memberLimit" : memberLimit,
-                                          "membersAmount": membersAmount,
-                                          "publicID" : publicID,
-                                          "dateCreated": dateCreated,
-                                          "users":users])
+                return group
+               
 
             }
             
         }
         
-//                COLLECTION_USER.document(uid).collection("groups").getDocuments { [self] (snapshot, _) in
-//                    guard let documents = snapshot?.documents else{
-//                        print("No documents")
-//                        return
-//                    }
-//
-//
-//                    self.user?.groups = documents.map{ (queryDocumentSnapshot) -> Group in
-//                        let data = queryDocumentSnapshot.data()
-//                        let groupName = data["groupName"] as? String ?? ""
-//                        let memberLimit = data["memberLimit"] as? Int ?? 1
-//                        let membersAmount = data["membersAmount"] as? Int ?? 1
-//                        let publicID = data["publicID"] as? String ?? ""
-//                        let dateCreated = data["dateCreated"] as? Date ?? Date()
-//                        let users = data["users"] as? [User.ID] ?? [" "]
-//
-//
-//                        return Group(dictionary: ["groupName": groupName,
-//                                                  "memberLimit" : memberLimit,
-//                                                  "membersAmount": membersAmount,
-//                                                  "publicID" : publicID,
-//                                                  "dateCreated": dateCreated,
-//                                                  "users":users])
-//
-//                    }
-//
-//                    print("Successfully fetched user groups")
-//
-//
-//                }
-        
-        
+
         
     }
 }

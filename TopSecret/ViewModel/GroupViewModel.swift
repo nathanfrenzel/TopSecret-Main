@@ -12,15 +12,13 @@ import Firebase
 
 class GroupViewModel: ObservableObject {
     
-    
-    @Published var groups: [Group] = []
+    @Published var group = Group()
     
     var userVM: UserAuthViewModel?
     
     
     
     init(){
-        userVM?.fetchUser()
        
     }
     
@@ -28,15 +26,16 @@ class GroupViewModel: ObservableObject {
         self.userVM = userVM
     }
     
-    func joinGroup(publicID: String, userID: User.ID){
+    func joinGroup(publicID: String){
         
 
         //this finds the group in group list and adds user to its user list
+        
         let groupQuery = COLLECTION_GROUP.whereField("publicID", isEqualTo: publicID)
 
         
         
-        groupQuery.getDocuments { (querySnapshot, err) in
+        groupQuery.getDocuments { [self]  (querySnapshot, err) in
             if let err = err {
                 print("DEBUG: \(err.localizedDescription)")
                 return
@@ -46,21 +45,52 @@ class GroupViewModel: ObservableObject {
             }
             
             for document in querySnapshot!.documents{
-
-
+                
+                let group = Group(dictionary: document.data())
+               
                 //updates the list of users
-                document.reference.updateData(["users":FieldValue.arrayUnion([userID ?? " "])])
+                document.reference.updateData(["users":FieldValue.arrayUnion([userVM?.user?.id ?? " "])])
+                document.reference.updateData(["memberAmount": group.memberAmount+1])
                 print("sucesfully added user to group")
                 
              
             }
         }
         
-        userVM?.fetchUser()
       
     }
     
-    func createGroup(groupName: String, memberLimit: Int, dateCreated: Date, publicID: String, user: [User.ID]){
+    func leaveGroup(){
+        let groupQuery = COLLECTION_GROUP.whereField("users", arrayContains: userVM?.user?.id ?? "")
+        
+        groupQuery.getDocuments { [self]  (querySnapshot, err) in
+            if let err = err {
+                print("DEBUG: \(err.localizedDescription)")
+                return
+            }
+           
+            for document in querySnapshot!.documents{
+
+                let group = Group(dictionary: document.data())
+
+                
+                //updates the list of users
+                document.reference.updateData(["users":FieldValue.arrayRemove([userVM?.user?.id ?? " "])])
+                document.reference.updateData(["memberAmount": group.memberAmount-1])
+
+                print("sucesfully removed user from group")
+                
+             
+            }
+        }
+        
+    
+        
+        
+    }
+    
+   
+    func createGroup(groupName: String, memberLimit: Int, dateCreated: Date, publicID: String){
         
         
         
@@ -68,11 +98,13 @@ class GroupViewModel: ObservableObject {
         let data = ["groupName" : groupName,
                     "memberLimit" : memberLimit,
                     "publicID" : publicID,
-                    "users" : user 
+                    "users" : userVM?.user?.id ?? "",
+                    "memberAmount": group.memberAmount
         ] as [String:Any]
         
         let group = Group(dictionary: data)
-
+        
+        
         
         
 
@@ -81,9 +113,8 @@ class GroupViewModel: ObservableObject {
             print("DEBUG: Sucessfully created group")
         }
         
-        joinGroup(publicID: publicID, userID: user[0])
+        joinGroup(publicID: publicID)
 
-        self.userVM?.fetchUser()
 
         
     }

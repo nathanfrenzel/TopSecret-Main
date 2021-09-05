@@ -28,7 +28,8 @@ struct CreateGroupView: View {
             
             
             Button(action:{
-                groupVM.createGroup(groupName: groupName, memberLimit: memberLimit, dateCreated: Date(), publicID: publicID, user: [userVM.user?.id])
+                groupVM.createGroup(groupName: groupName, memberLimit: memberLimit, dateCreated: Date(), publicID: publicID)
+                userVM.fetchUser()
                 
             },label:{
                 Text("Create Group")
@@ -49,7 +50,8 @@ struct CreateGroupView: View {
             
             Button(action:{
              
-                groupVM.joinGroup(publicID: joinPublicID, userID: userVM.user?.id)
+                groupVM.joinGroup(publicID: joinPublicID)
+                userVM.fetchUser()
                 
             },label:{
                 Text("Join Group")
