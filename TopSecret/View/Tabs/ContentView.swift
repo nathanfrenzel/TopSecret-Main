@@ -13,11 +13,14 @@ struct ContentView: View {
     @State var isShowingNewPostView = true
     @State var selectedTab = 0
     @State var storedTab = 0
+    
+    init() {
+        UITabBar.appearance().isTranslucent = true
+    }
 
     var body: some View {
         //if there is a user signed in then go to the Tab View else go to the register view
             if vm.userSession != nil {
-             
                     GeometryReader { math in
                         TabView(selection: $selectedTab) {
                             VotingView()
@@ -39,7 +42,6 @@ struct ContentView: View {
                             HomeScreenView(vm: _vm)
                                 .tabItem {
                                     Image(systemName: "house")
-
                                         .scaledToFill()
                                         .foregroundColor(.gray)
                                         .frame(width: 128, height: 128)
@@ -53,7 +55,7 @@ struct ContentView: View {
                                         .frame(width: 128, height: 128)
                                 }.tag(3)
                                 .onAppear{storedTab = 3}
-                            AddContentView()
+                            AddContentView(isPresented: $isShowingNewPostView, selectedTab: $selectedTab, storedTab: $storedTab, selectedOption: $selectedOption)
                                 .tabItem {
                                     Image(systemName: "plus")
                                         .scaledToFill()
@@ -62,9 +64,7 @@ struct ContentView: View {
                                 }.tag(4)
                                 .onAppear { isShowingNewPostView = true }
                         }.accentColor(Color("TabColor"))
-                        .foregroundColor(.gray)
-                        .background(Color.gray)
-                        
+                        .background(Color("TabBarColor"))
                     }
                
             }else{

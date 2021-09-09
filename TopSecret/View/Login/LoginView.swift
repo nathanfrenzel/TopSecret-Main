@@ -14,16 +14,12 @@ struct LoginView: View {
     @State var showForgotPasswordView = false
     @State var beginRegisterView: Bool = false
     var body: some View {
+        
         NavigationView {
-           
-             
             ZStack{
                 //Background color
                 Color("Background")
                     
-                 
-              
-                
                     //Overal VStack
                 VStack{
                     
@@ -31,7 +27,6 @@ struct LoginView: View {
                  Spacer()
                    
                     
-                        
                  //Icon and Name
                 VStack{
                     

@@ -23,6 +23,7 @@ class UserAuthViewModel: ObservableObject {
     @Published var fullName: String?
     @Published var birthday: Date?
     
+    static let shared = UserAuthViewModel()
     
     init(){
         userSession = Auth.auth().currentUser

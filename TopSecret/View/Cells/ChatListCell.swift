@@ -23,6 +23,8 @@ struct ChatListCell: View {
                     Text("\(groupName)").fontWeight(.bold).foregroundColor(Color("Foreground"))
                     Text("@").foregroundColor(Color("AccentColor"))
                     Spacer()
+                    
+                    //no groupmembercount necessary, besides the group settings view
                     Text("\(groupMembersCount) members").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
                 }
                 HStack{

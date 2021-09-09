@@ -17,7 +17,7 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color("Background")
+                Color(.black)
                 VStack{
                     Text("Welcome: \(vm.user?.username ?? "")")
                 }
@@ -40,6 +40,7 @@ struct HomeScreenView: View {
                         Image("FinishedIcon")
                             .resizable()
                             .frame(width: 64, height: 64)
+                            .padding(.top, 12)
                     })
                    
                 }

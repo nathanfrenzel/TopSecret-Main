@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6290119C267BE56D00A226EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789FC2CD2617DA720021616B /* Preview Assets.xcassets */; };
+		629710FA26E563E400A90E61 /* FullScreenPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629710F926E563E400A90E61 /* FullScreenPostView.swift */; };
+		629710FC26E5662E00A90E61 /* PostViewFilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629710FB26E5662E00A90E61 /* PostViewFilterOptions.swift */; };
+		629710FE26E567C300A90E61 /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629710FD26E567C300A90E61 /* UploadPostViewModel.swift */; };
+		6297110026E5681500A90E61 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629710FF26E5681500A90E61 /* HomeScreenViewModel.swift */; };
+		6297110226E5688C00A90E61 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297110126E5688C00A90E61 /* TextArea.swift */; };
+		6297110526E6CB7000A90E61 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297110426E6CB7000A90E61 /* KeyboardReadable.swift */; };
 		62CE5ADA26DEE44E00AE6ACC /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5AD926DEE44E00AE6ACC /* VotingView.swift */; };
 		62CE5ADC26DEE45600AE6ACC /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5ADB26DEE45600AE6ACC /* EventView.swift */; };
 		62CE5ADE26DEE46000AE6ACC /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */; };
@@ -48,6 +54,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		629710F926E563E400A90E61 /* FullScreenPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPostView.swift; sourceTree = "<group>"; };
+		629710FB26E5662E00A90E61 /* PostViewFilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewFilterOptions.swift; sourceTree = "<group>"; };
+		629710FD26E567C300A90E61 /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
+		629710FF26E5681500A90E61 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		6297110126E5688C00A90E61 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		6297110426E6CB7000A90E61 /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
 		62CE5AD926DEE44E00AE6ACC /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		62CE5ADB26DEE45600AE6ACC /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
@@ -106,17 +118,36 @@
 			children = (
 				78A61F1A26BB12BC00671021 /* CustomTextField.swift */,
 				78D1A74D26DEF0BD0083FE2C /* TabToolbarItemView.swift */,
+				6297110126E5688C00A90E61 /* TextArea.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		629710F826E560FA00A90E61 /* AddContent */ = {
+			isa = PBXGroup;
+			children = (
+				62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */,
+				629710F926E563E400A90E61 /* FullScreenPostView.swift */,
+				629710FB26E5662E00A90E61 /* PostViewFilterOptions.swift */,
+			);
+			path = AddContent;
+			sourceTree = "<group>";
+		};
+		6297110326E6CB6000A90E61 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6297110426E6CB7000A90E61 /* KeyboardReadable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		62CE5AD826DEE43F00AE6ACC /* Tabs (temp) */ = {
 			isa = PBXGroup;
 			children = (
+				629710F826E560FA00A90E61 /* AddContent */,
+				78D1A74026DEDED50083FE2C /* ChatTab */,
 				62CE5AD926DEE44E00AE6ACC /* VotingView.swift */,
 				62CE5ADB26DEE45600AE6ACC /* EventView.swift */,
-				62CE5ADD26DEE46000AE6ACC /* AddContentView.swift */,
-				78D1A74026DEDED50083FE2C /* ChatTab */,
 				62CE5AE126DEE48600AE6ACC /* HomeScreenView.swift */,
 			);
 			path = "Tabs (temp)";
@@ -199,6 +230,8 @@
 				78B8DD9126CDBCFF00E8FE00 /* UserAuthViewModel.swift */,
 				78A321D826D951390025E37A /* Email-PhoneRegisterCombine.swift */,
 				78D1A75526DEFE4F0083FE2C /* GroupViewModel.swift */,
+				629710FD26E567C300A90E61 /* UploadPostViewModel.swift */,
+				629710FF26E5681500A90E61 /* HomeScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,6 +239,7 @@
 		789FC2FD2618BAF50021616B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6297110326E6CB6000A90E61 /* Protocols */,
 				62901199267B747300A226EF /* Views */,
 				78B8DD9526CDC08100E8FE00 /* Constants.swift */,
 			);
@@ -359,9 +393,14 @@
 				62CE5ADC26DEE45600AE6ACC /* EventView.swift in Sources */,
 				78D1A72126DE98CA0083FE2C /* RegisterPhoneView.swift in Sources */,
 				78A61F1E26BB19F700671021 /* RegisterEmailView.swift in Sources */,
+				6297110026E5681500A90E61 /* HomeScreenViewModel.swift in Sources */,
+				6297110526E6CB7000A90E61 /* KeyboardReadable.swift in Sources */,
 				62CE5AE226DEE48600AE6ACC /* HomeScreenView.swift in Sources */,
 				78D1A75926DEFE750083FE2C /* GroupModel.swift in Sources */,
 				78A61F0D26B9B79800671021 /* LoginView.swift in Sources */,
+				6297110226E5688C00A90E61 /* TextArea.swift in Sources */,
+				629710FA26E563E400A90E61 /* FullScreenPostView.swift in Sources */,
+				629710FC26E5662E00A90E61 /* PostViewFilterOptions.swift in Sources */,
 				789FC2F82618B9FC0021616B /* UserModel.swift in Sources */,
 				78D1A73726DEC6050083FE2C /* CreatePassword.swift in Sources */,
 				78B8DFED26E4626000C99DAD /* SettingsMenuView.swift in Sources */,
@@ -378,6 +417,7 @@
 				62CE5ADE26DEE46000AE6ACC /* AddContentView.swift in Sources */,
 				78B8DD9626CDC08100E8FE00 /* Constants.swift in Sources */,
 				78D1A75626DEFE4F0083FE2C /* GroupViewModel.swift in Sources */,
+				629710FE26E567C300A90E61 /* UploadPostViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
