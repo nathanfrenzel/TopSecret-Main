@@ -12,3 +12,5 @@ import Firebase
 let COLLECTION_USER = Firestore.firestore().collection("Users")
 let COLLECTION_POST = Firestore.firestore().collection("Posts")
 let COLLECTION_GROUP = Firestore.firestore().collection("Groups")
+let COLLECTION_CHAT = Firestore.firestore().collection("Chats")
+

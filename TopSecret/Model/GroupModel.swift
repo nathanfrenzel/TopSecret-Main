@@ -19,6 +19,7 @@ struct Group: Identifiable{
     var memberAmount: Int = 0
     var memberLimit: Int?
     var users: [User.ID]?
+    var groupChat : ChatModel?
     
     init(dictionary: [String:Any]){
         self.id = UUID().uuidString
@@ -28,6 +29,7 @@ struct Group: Identifiable{
         self.memberAmount = dictionary["memberAmount"] as? Int ?? 0
         self.memberLimit = dictionary["memberLimit"] as? Int ?? 0
         self.users = dictionary["users"] as? [User.ID] ?? [" "]
+        self.groupChat = dictionary["groupChat"] as? ChatModel ?? ChatModel()
     }
     
     init(){

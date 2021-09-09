@@ -9,20 +9,60 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var vm : UserAuthViewModel
-    @State var selectedOption: String = "text"
     @State var isShowingNewPostView = true
-    @State var selectedTab = 0
+    @State var selectedTab = ""
     @State var storedTab = 0
     
-    init() {
-        UITabBar.appearance().isTranslucent = true
-    }
-
+    
     var body: some View {
+        
+        
+        
+        
         //if there is a user signed in then go to the Tab View else go to the register view
-            if vm.userSession != nil {
-                    GeometryReader { math in
-                        TabView(selection: $selectedTab) {
+        if vm.userSession != nil{
+//            ZStack{
+//                Color("Background")
+//                ZStack{
+//                    switch(selectedTab){
+//                    case "checkmark":
+//                        VotingView()
+//                    case "message":
+//                        MessageListView(isShowingTabs: $isShowingTabs)
+//                    case "house":
+//                        HomeScreenView()
+//                    case "text.book.closed":
+//                        EventView()
+//                    case "plus":
+//                        AddContentView()
+//                    default:
+//                        HomeScreenView()
+//                    }
+//                    if isShowingTabs{
+//                        VStack{
+//                            Spacer()
+//                            Divider()
+//                            HStack(spacing: 5){
+//                                ForEach(tabs, id: \.self){ tab in
+//                                    Button(action:{
+//                                        selectedTab = tab
+//                                    },label:{
+//                                        Image(systemName: tab)
+//                                            .scaledToFill()
+//                                            .foregroundColor(.gray)
+//                                            .frame(width: 64, height: 64)
+//                                    })
+//                                }
+//                            }
+//                        }
+//                    }
+//
+//
+//
+//                }
+//            }
+            NavigationView{
+                        TabView(selection: $storedTab) {
                             VotingView()
                                 .tabItem {
                                     Image(systemName: "checkmark")
@@ -30,7 +70,7 @@ struct ContentView: View {
                                         .foregroundColor(.gray)
                                         .frame(width: 128, height: 128)
                                 }.tag(2)
-                                .onAppear { storedTab = 2 }
+                               
                             MessageListView()
                                 .tabItem {
                                     Image(systemName: "message")
@@ -38,15 +78,16 @@ struct ContentView: View {
                                         .foregroundColor(.gray)
                                         .frame(width: 128, height: 128)
                                 }.tag(1)
-                                .onAppear { storedTab = 1 }
+                              
                             HomeScreenView(vm: _vm)
                                 .tabItem {
                                     Image(systemName: "house")
+            
                                         .scaledToFill()
                                         .foregroundColor(.gray)
                                         .frame(width: 128, height: 128)
                                 }.tag(0)
-                                .onAppear { storedTab = 0 }
+                              
                             EventView()
                                 .tabItem {
                                     Image(systemName: "text.book.closed")
@@ -62,7 +103,7 @@ struct ContentView: View {
                                         .foregroundColor(.gray)
                                         .frame(width: 128, height: 128)
                                 }.tag(4)
-                                .onAppear { isShowingNewPostView = true }
+                               
                         }.accentColor(Color("TabColor"))
                         .background(Color("TabBarColor"))
                     }
@@ -70,5 +111,8 @@ struct ContentView: View {
             }else{
                LoginView()
             }
+        }else{
+            LoginView()
+        }
     }
 }

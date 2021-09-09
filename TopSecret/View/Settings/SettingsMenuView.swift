@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SettingsMenuView: View {
-    @Binding var goBack: Bool
+    @Environment(\.presentationMode) var dismiss
     @EnvironmentObject var vm: UserAuthViewModel
     var body: some View {
         VStack{
             Button(action: {
-                self.goBack.toggle()
+                self.dismiss.wrappedValue.dismiss()
             }, label:{
                 Text("Back")
             })
@@ -21,8 +21,10 @@ struct SettingsMenuView: View {
             Text("Settings!")
             
             Button(action: {
-                self.goBack.toggle()
-                vm.signOut()
+                self.dismiss.wrappedValue.dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    vm.signOut()
+                }
             }, label:{
                 Text("Sign Out")
             })
@@ -34,6 +36,6 @@ struct SettingsMenuView: View {
 
 struct SettingsMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsMenuView(goBack: .constant(false))
+        SettingsMenuView()
     }
 }
