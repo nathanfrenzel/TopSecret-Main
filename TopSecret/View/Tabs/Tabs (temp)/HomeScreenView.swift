@@ -15,54 +15,48 @@ struct HomeScreenView: View {
 
     
     var body: some View {
-        NavigationView{
             ZStack{
                 Color("Background")
                 VStack{
-                    Text("Welcome: \(vm.user?.username ?? "")")
-                }
-            }
-            .edgesIgnoringSafeArea(.all)
-            .toolbar {
-                
-                ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button(action: { self.settingsOpen.toggle() }, label: {
-                            Image("Hamburger_icon")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                    })
-                })
-                
-                ToolbarItem(placement: .principal) {
-                    Button(action:{
+                    HStack(spacing: 20){
+                        Button(action: { self.settingsOpen.toggle() }, label: {
+                                Image("Hamburger_icon")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                        }).sheet(isPresented: $settingsOpen, content: {
+                            SettingsMenuView()
+                        }).padding(.leading,20)
+                        Spacer()
                         
-                    }, label:{
-                        Image("FinishedIcon")
-                            .resizable()
-                            .frame(width: 64, height: 64)
-                    })
-                   
+                        Button(action:{
+                            
+                        }, label:{
+                            Image("FinishedIcon")
+                                .resizable()
+                                .frame(width: 64, height: 64)
+                        })
+                       Spacer()
+                        Button(action: {
+                            showCreateGroupView.toggle()
+                        }, label: {
+                            Image(systemName: "person.3.fill")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                        })            .sheet(isPresented: $showCreateGroupView, content: {
+                            CreateGroupView(goBack: $showCreateGroupView)
+                        })
+.padding(.trailing,20)
+                    }.padding(.top,50)
+                    Spacer()
+                    Text("Welcome: \(vm.user?.username ?? "")")
+                    
                 }
-                
-                ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button(action: {
-                        showCreateGroupView.toggle()
-                    }, label: {
-                        Image(systemName: "person.3.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                    })
-                })
-              
-            }
-            .sheet(isPresented: $settingsOpen, content: {
-                SettingsMenuView(goBack: $settingsOpen)
-            })
+            }.navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.all)
            
             
-        } .sheet(isPresented: $showCreateGroupView, content: {
-            CreateGroupView(goBack: $showCreateGroupView)
-        })
+           
+         
     }
 }
 

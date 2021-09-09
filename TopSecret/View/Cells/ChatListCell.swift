@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ChatListCell: View {
-    var groupName: String = ""
-    var groupMembersCount: Int = 0
+    var chatName: String = ""
+    var chatMembersCount: Int = 0
     var body: some View {
         HStack{
             VStack{
@@ -20,14 +20,13 @@ struct ChatListCell: View {
             
             VStack{
                 HStack{
-                    Text("\(groupName)").fontWeight(.bold).foregroundColor(Color("Foreground"))
+                    Text("\(chatName)").fontWeight(.bold).foregroundColor(Color("Foreground"))
                     Text("@").foregroundColor(Color("AccentColor"))
                     Spacer()
-                    Text("\(groupMembersCount) members").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
+                    Text("\(chatMembersCount) members").padding(.trailing,15).foregroundColor(Color.gray).font(.footnote)
                 }
-                HStack{
+                HStack(alignment: .firstTextBaseline){
                     Text("This is my message")
-                    Spacer()
                 }
             }.padding(.trailing,10)
         }

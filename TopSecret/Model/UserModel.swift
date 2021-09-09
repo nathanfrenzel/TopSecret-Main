@@ -14,6 +14,7 @@ struct User : Identifiable {
     var password: String?
     var fullname: String?
     var groups: [Group] = []
+    var chats: [ChatModel] = []
     var birthday: Date?
     
 
@@ -26,6 +27,7 @@ init(dictionary: [String:Any]) {
     self.fullname = dictionary["fullname"] as? String ?? ""
     self.birthday = dictionary["birthday"] as? Date ?? Date()
     self.groups = dictionary["groups"] as? [Group] ?? [Group()]
+    self.chats = dictionary["chats"] as? [ChatModel] ?? [ChatModel()]
  }
 
     init(){

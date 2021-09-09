@@ -28,7 +28,7 @@ struct RegisterEmailView: View {
                 Color("Background")
                 
                 NavigationLink(
-                    destination:EnterCode(value: $email),             isActive: $isNext,
+                    destination:CreateUsername(),             isActive: $isNext,
                     label: {
                         EmptyView()
                     })

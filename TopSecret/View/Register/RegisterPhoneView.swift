@@ -22,7 +22,7 @@ struct RegisterPhoneView: View {
             Color("Background")
             
             NavigationLink(
-                destination:EnterCode(value: $phoneNumber),             isActive: $isNext,
+                destination:CreateUsername(),             isActive: $isNext,
                 label: {
                     EmptyView()
                 })

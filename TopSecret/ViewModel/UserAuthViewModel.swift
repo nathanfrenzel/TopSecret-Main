@@ -89,23 +89,45 @@ class UserAuthViewModel: ObservableObject {
     
     func fetchUser(){
         guard let uid = userSession?.uid else {return}
-        
         COLLECTION_USER.document(uid).getDocument{ (snapshot, _) in
             guard let data = snapshot?.data() else {return}
             let user = User(dictionary: data)
             self.user = user
-            self.fetchGroups()
-            
             print("Fetched User Data!")
         }
         
+    }
+    
+    func fetchChats(){
+        guard let uid = user?.id  else{return}
+        
+        COLLECTION_USER.document(uid).collection("Chat").whereField("users", arrayContains: uid).getDocuments { (snapshot, err) in
+            guard let documents = snapshot?.documents else{
+                print("No documents")
+                return
+            }
+            
+            self.user?.chats = documents.map{ (queryDocumentSnapshot) -> ChatModel in
+                let data = queryDocumentSnapshot.data()
+               
+
+                let chat = ChatModel(dictionary: data)
+                
+               
+                print(chat.name ?? "no group")
+
+                return chat
+
+            }
+            
+        }
     }
     
     func fetchGroups(){
         guard let uid = userSession?.uid else {return}
         
         
-        COLLECTION_GROUP.whereField("users", arrayContains: uid).getDocuments { (snapshot, err) in
+        COLLECTION_USER.document(uid).collection("Groups").whereField("users", arrayContains: uid).getDocuments { (snapshot, err) in
             guard let documents = snapshot?.documents else{
                 print("No documents")
                 return
