@@ -2,7 +2,7 @@
 //  ChatViewModel.swift
 //  TopSecret
 //
-//  Created by Bruce Blake on 9/5/21.
+//  Created by nathan frenzel on 9/9/21.
 //
 
 import Foundation

@@ -37,3 +37,4 @@ struct ChatListCell_Previews: PreviewProvider {
         ChatListCell().preferredColorScheme(.dark)
     }
 }
+}

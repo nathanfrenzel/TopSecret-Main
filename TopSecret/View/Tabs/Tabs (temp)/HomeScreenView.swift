@@ -87,7 +87,7 @@ struct HomeScreenView: View {
               
             }
             .sheet(isPresented: $settingsOpen, content: {
-                SettingsMenuView(goBack: $settingsOpen)
+                SettingsMenuView()
             })
            
             
